@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var ServiceSchema = new Schema ({
-
+var ClientSchema = new Schema ({
+    name: String,
+    phone: String,
+    email: String
 });
 
-const Service = mongoose.model('Service', ServiceSchema);
+const Client = mongoose.model('Client', ClientSchema);
 
-module.exports = Service;
+module.exports = Client;
