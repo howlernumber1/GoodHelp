@@ -33,8 +33,23 @@ db.on('error', function(err) {
   console.log('Mongoose Error: ', err);
 })
 
-// require api routes
-require('./routes/api-routes')(app);
+
+// DB Config
+const db = require('./config/keys').mongoURI;
+
+// Connect to MongoDB
+mongoose
+    .connect(db)
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
+
+app.get('/', (req, res) => res.send('Hello'));
+
+// Use Routes
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/posts', posts);
+
 
 //once logged in to the db through mongosse, log a success message
 db.once('open', function() {
