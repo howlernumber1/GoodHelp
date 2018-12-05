@@ -1,12 +1,12 @@
-const express = require("express");
+const express = require('express');
 const mongoose = require("mongoose");
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -27,6 +27,35 @@ if (process.env.MONGODB_URI) {
 //-----------------End database configuration-------------------------
 
 var db = mongoose.connection;
+
+// Define middleware here
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+//use sessions for tracking logins
+app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
+
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  var err = new Error('File Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+// define as the last app.use callback
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500);
+  res.send(err.message);
+});
+
 
 // show any mongoose errors
 db.on('error', function(err) {
