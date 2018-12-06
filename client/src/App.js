@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-// import logo from './logo.svg';
 import HomePage from './components/HomePage/HomePage';
-import SearchPage from "./components/SearchPage/SearchPage";
+// import SearchPage from "./components/SearchPage/SearchPage";
 import ServicesPage from "./components/ServicesPage/ServicesPage";
 import UserPage from "./components/UserPage/UserPage";
 import ProviderPage from "./components/ProviderProfile/ProviderProfile";
@@ -17,12 +16,13 @@ class App extends Component {
     <BrowserRouter>
     <div>
       <header>
-        <nav class="navbar navbar-dark bg-dark">
-          <Link to={'/'}>Home</Link> |
-          <Link to={'/search'}>Search</Link> |
-          <Link to={'/services'}>Services</Link>|
-          <Link to={'/user'}>Member</Link> |
-          <Link to={'/user'}>Provider</Link>
+        <nav className="navbar d-flex justify-content-end">
+        <p className="navbar-brand"> GoodHelp</p>
+         <a className="links"> <Link to={'/'}>Home</Link> </a> | 
+          {/* <Link to={'/search'}>Search</Link> | */}
+          <a className="links"> <Link to={'/services'}>Services</Link> </a>|
+          <a className="links"><Link to={'/user'}>Member</Link> </a>|
+          <a className="links"><Link to={'/user'}>Provider</Link> </a>
 
 
         </nav>
@@ -30,7 +30,7 @@ class App extends Component {
 
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route exact path='/search' component={SearchPage} />
+        {/* <Route exact path='/search' component={SearchPage} /> */}
         <Route exact path='/services' component={ServicesPage} />
         <Route exact path='/user' component={UserPage} />
         <Route exact path='/provider' component={ProviderPage} />
