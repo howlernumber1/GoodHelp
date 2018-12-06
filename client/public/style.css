@@ -48,6 +48,7 @@ a :hover {
     color: teal;
     border: 1px solid black;
     align-content: center;
+    
 }
 
 /* .btn :hover {
@@ -72,6 +73,7 @@ input {
 }
 .card {
     border: 1px solid #fac61a;
+   
 }
 
 .iconBtn {
@@ -79,4 +81,17 @@ input {
     color: white;
     border: 1px solid black;
 }
+
+.card-title {
+    font-family: 'Nunito', sans-serif;
+    /* font-family: 'Dosis', sans-serif;
+font-family: 'Text Me One', sans-serif; */
+}
+
+/* img {
+
+    max-width: 100%;
+    height: auto;
+
+} */
 
