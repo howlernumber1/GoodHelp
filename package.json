@@ -23,8 +23,7 @@
     "axios": "^0.16.2",
     "express": "^4.16.4",
     "if-env": "^1.0.4",
-    "mongoose": "^5.3.14",
-    "node": "^11.3.0"
+    "mongoose": "^5.3.14"
   },
   "repository": {
     "type": "git",
