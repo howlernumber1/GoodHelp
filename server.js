@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const client = require('./routes/api/client');
-const service = require('./routes/api/service');
-const serviceprovider = require('./routes/api/serviceprovider');
+const client = require('./routes/api/Client');
+const service = require('./routes/api/Service');
+const serviceprovider = require('./routes/api/ServiceProvider');
 
 const app = express();
 
