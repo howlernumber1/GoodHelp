@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require("mongoose");
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+// const bodyParser = require('body-parser');
+// const session = require('express-session');
+// const MongoStore = require('connect-mongo')(session);
 const client = require('./routes/api/Client');
 const service = require('./routes/api/Service');
 const serviceprovider = require('./routes/api/ServiceProvider');
@@ -19,7 +19,11 @@ if (process.env.NODE_ENV === "production") {
 
 // -----------------Database configuration with Mongoose---------------
 // -----------------Define local MongoDB URI---------------
-var databaseUri = 'mongodb://localhost/goodhelpApp';
+// var databaseUri = 'mongodb://localhost/goodhelpApp';
+
+// DB Config
+const db = require('./config/keys').mongoURI;
+
 //------------------------------------------------
 if (process.env.MONGODB_URI) {
 //THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
@@ -30,20 +34,9 @@ if (process.env.MONGODB_URI) {
 }
 //-----------------End database configuration-------------------------
 
-// DB Config
-// const db = require('./config/keys').mongoURI;
 
-var db = mongoose.connection;
+// var db = mongoose.connection;
 
-// use sessions for tracking logins
-app.use(session({
-  secret: 'SECRET',
-  resave: true,
-  saveUninitialized: false,
-  store: new MongoStore({
-    mongooseConnection: db
-  })
-}));
 
 
 
@@ -60,21 +53,6 @@ app.use('/api/service', service);
 app.use('/api/serviceprovider', serviceprovider);
 app.use('/api/user', user);
 
-
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('File Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handler
-// define as the last app.use callback
-app.use(function (err, req, res, next) {
-  res.status(err.status || 500);
-  res.send(err.message);
-});
 
 
 // show any mongoose errors
