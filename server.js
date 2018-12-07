@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const client = require('./routes/api/Client');
+const service = require('./routes/api/Service');
+const serviceprovider = require('./routes/api/ServiceProvider');
+const user = require('./routes/api/User');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -26,21 +30,37 @@ if (process.env.MONGODB_URI) {
 }
 //-----------------End database configuration-------------------------
 
+// DB Config
+// const db = require('./config/keys').mongoURI;
+
 var db = mongoose.connection;
 
-// Define middleware here
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-//use sessions for tracking logins
+// use sessions for tracking logins
 app.use(session({
-  secret: 'work hard',
+  secret: 'SECRET',
   resave: true,
   saveUninitialized: false,
   store: new MongoStore({
     mongooseConnection: db
   })
 }));
+
+
+
+// Define middleware here
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+
+
+// Use Routes
+app.use('/api/client', client);
+app.use('/api/service', service);
+app.use('/api/serviceprovider', serviceprovider);
+app.use('/api/user', user);
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -62,8 +82,6 @@ db.on('error', function(err) {
   console.log('Mongoose Error: ', err);
 })
 
-// require api routes
-require('./routes/api-routes')(app);
 
 //once logged in to the db through mongosse, log a success message
 db.once('open', function() {
