@@ -17,11 +17,11 @@ class App extends Component {
             <nav className="navbar">
               <p className="navbar-brand"> GoodHelp</p>
               <span>
-                <a className="links"> <Link to={'/'}>Home</Link> </a> |
+                <Link className="links" to={'/'}>Home</Link>  |
           {/* <Link to={'/search'}>Search</Link> | */}
-                <a className="links"> <Link to={'/services'}>Services</Link> </a>|
-          <a className="links"><Link to={'/user'}>Member</Link> </a>|
-          <a className="links"><Link to={'/user'}>Provider</Link> </a>
+                <Link className="links" to={'/services'}>Services</Link> |
+                <Link className="links" to={'/user'}>Member</Link> |
+                <Link className="links" to={'/user'}>Provider</Link>
               </span>
 
             </nav>
