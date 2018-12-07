@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const client = require('./routes/api/Client');
 const service = require('./routes/api/Service');
 const serviceprovider = require('./routes/api/ServiceProvider');
+const customer = require('./routes/api/Customer');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get('/', (req, res) => res.send('Hello'));
 app.use('/api/client', client);
 app.use('/api/service', service);
 app.use('/api/serviceprovider', serviceprovider);
+app.use('/api/customer', customer);
 
 
 // required for Heroku
