@@ -18,7 +18,7 @@ class App extends Component {
       <header>
         <nav className="navbar d-flex justify-content-end">
         <p className="navbar-brand"> GoodHelp</p>
-         <a className="links"> <Link to={'/'}>Home</Link> </a> | 
+         <a className="links"> <Link to={'/'}>Home</Link> </a> |
           {/* <Link to={'/search'}>Search</Link> | */}
           <a className="links"> <Link to={'/services'}>Services</Link> </a>|
           <a className="links"><Link to={'/user'}>Member</Link> </a>|
