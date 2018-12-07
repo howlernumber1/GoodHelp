@@ -51,11 +51,11 @@ a :hover {
     
 }
 
-/* .btn :hover {
+.btn :hover {
     background-color: teal;
     color: white;
     border: 1px solid black;
-} */
+} 
 
 .title {
     font-family: KateCelebration;
@@ -64,15 +64,21 @@ a :hover {
 
 .searchSection {
 
-text-align: center;
+    text-align: center;
 
 }
 
-input {
-    align-content: center;
-}
+/* .searchSecction .form-inline {
+
+    align-items: center;
+} */
+
+
 .card {
     border: 1px solid #fac61a;
+    padding-top: 30px;
+    
+  
    
 }
 
@@ -88,10 +94,16 @@ input {
 font-family: 'Text Me One', sans-serif; */
 }
 
-/* img {
+img {
 
-    max-width: 100%;
-    height: auto;
+    max-width: 60%;
+    height: 120px;
+    margin: auto;
 
-} */
+
+} 
+
+.card-body {
+text-align: center;
+}
 
