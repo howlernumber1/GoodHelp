@@ -16,21 +16,49 @@ const client = require('../../models/Client');
 // @desc    TESTS profile route
 // @access  PUBLIC
 
-router.get('/test', (req, res) => res.json({msg: 'Profile Works!'}));
+router.get('/test', (req, res) => res.json({
+    msg: 'Profile Works!'
+}));
 
 // @route   GET  api/profile
 // @desc    GET current users profile
 // @access  PRIVATE
-router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
-    Customer.findOne({ user: req.user.id })
-        .then(profile => {
-            if(!profile) {
-                errors.noprofile = 'There is no profile for this user!';
-                return res.status(400).json(errors);
-            }
-        res.json(profile);
-        })
-        .catch(err => res.status(404).json(err));
-});
+router.get('/',
+    passport.authenticate('jwt', {
+        session: false
+    }),
+    (req, res) => {
+        const errors = {};
+
+        Customer.findOne({
+                user: req.user.id
+            })
+            .then(profile => {
+                if (!profile) {
+                    errors.noprofile = 'There is no profile for this user!';
+                    return res.status(400).json(errors);
+                }
+                res.json(profile);
+            })
+            .catch(err => res.status(404).json(err));
+    });
+
+// @route   POST  api/profile
+// @desc    Create or edit user profile
+// @access  PRIVATE
+router.post('/',
+    passport.authenticate('jwt', {
+        session: false
+    }),
+    (req, res) => {
+        // Get fields
+        const profileFields = {};
+        profileFields.user = req.user.id;
+        if (req.body.handle) profileFields.handle = req.body.handle;
+        if (req.body.name) profileFields.name = req.body.name;
+        if (req.body.phone) profileFields.phone = req.body.phone;
+        if (req.body.email) profileFields.email = req.body.email;
+    }
+);
 
 module.exports = router;
