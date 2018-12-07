@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
 import UserPage from "./components/UserPage/UserPage";
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
 import ProviderPage from "./components/ProviderProfile/ProviderProfile";
 import NoMatch from "./components/NoMatch/NoMatch";
 import './App.css';
@@ -23,6 +25,8 @@ class App extends Component {
                   <Link className="links" to={'/services'}>The</Link> |
                   <Link className="links" to={'/user'}>New</Link> |
                   <Link className="links" to={'/user'}>One</Link>
+                  <Login></Login>|
+                  <SignUp></SignUp>
                 </span>
 
               </nav>
@@ -35,6 +39,8 @@ class App extends Component {
                     <Link className="links" to={'/services'}>Services</Link> |
                     <Link className="links" to={'/user'}>Member</Link> |
                     <Link className="links" to={'/user'}>Provider</Link>
+                    <Login></Login>|
+                    <SignUp></SignUp>
                   </span>
 
                 </nav>
