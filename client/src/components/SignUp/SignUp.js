@@ -32,20 +32,20 @@ class SignUp extends React.Component {
         >
         <form>
           <div class="form-group">
-            <label for="InputEmail">Email address:</label>
+            <label htmlFor="InputEmail">Email address:</label>
             <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
-            <label for="InputUsername">Username:</label>
+            <label htmlFor="InputUsername">Username:</label>
             <input type="text" class="form-control" id="InputUsername" placeholder="Username"/>
           </div>
           <div class="form-group">
-            <label for="InputPassword">Password:</label>
+            <label htmlFor="InputPassword">Password:</label>
             <input type="password" class="form-control" id="InputPassword" placeholder="Password"/>
           </div>
           <div class="form-group">
-            <label for="PasswordConf">Confirm Password:</label>
+            <label htmlFor="PasswordConf">Confirm Password:</label>
             <input type="password" class="form-control" id="PasswordConf" placeholder="Password"/>
           </div>
           {/* <button type="submit" class="btn btn-primary">Submit</button>*/}

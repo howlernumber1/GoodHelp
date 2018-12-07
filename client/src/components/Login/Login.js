@@ -32,11 +32,11 @@ class Login extends React.Component {
         >
         <form>
           <div class="form-group">
-            <label for="InputEmail">Email address:</label>
+            <label htmlFor="InputEmail">Email address:</label>
             <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
           </div>
           <div class="form-group">
-            <label for="InputPassword">Password:</label>
+            <label htmlFor="InputPassword">Password:</label>
             <input type="password" class="form-control" id="InputPassword" placeholder="Password"/>
           </div>
           {/* <button type="submit" class="btn btn-primary">Submit</button>*/}
