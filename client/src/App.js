@@ -14,17 +14,32 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <header>
-            <nav className="navbar">
-              <p className="navbar-brand"> GoodHelp</p>
-              <span>
-                <Link className="links" to={'/'}>Home</Link>  |
+            {window.location.pathname === '/user' ? (
+              <nav className="navbar">
+                <p className="navbar-brand"> GoodHelp</p>
+                <span>
+                  <Link className="links" to={'/'}>Home</Link>  |
           {/* <Link to={'/search'}>Search</Link> | */}
-                <Link className="links" to={'/services'}>Services</Link> |
-                <Link className="links" to={'/user'}>Member</Link> |
-                <Link className="links" to={'/user'}>Provider</Link>
-              </span>
+                  <Link className="links" to={'/services'}>The</Link> |
+                  <Link className="links" to={'/user'}>New</Link> |
+                  <Link className="links" to={'/user'}>One</Link>
+                </span>
 
-            </nav>
+              </nav>
+            ) : (
+                <nav className="navbar">
+                  <p className="navbar-brand"> GoodHelp</p>
+                  <span>
+                    <Link className="links" to={'/'}>Home</Link>  |
+          {/* <Link to={'/search'}>Search</Link> | */}
+                    <Link className="links" to={'/services'}>Services</Link> |
+                    <Link className="links" to={'/user'}>Member</Link> |
+                    <Link className="links" to={'/user'}>Provider</Link>
+                  </span>
+
+                </nav>
+              )
+            }
           </header>
 
           <Switch>
