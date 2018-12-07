@@ -4,7 +4,8 @@ const router = express.Router();
 // @route GET api/ServiceProvider/test
 // @desc  Tests ServiceProvider route
 // @access Public
-router.get('/', (req, res) => res.json({msg: "Users Works!"}));
+// router.get('/', (req, res) => res.json({msg: "Users Works!"}));
+
 
 
 //POST route for updating data

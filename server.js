@@ -35,16 +35,6 @@ if (process.env.MONGODB_URI) {
 
 var db = mongoose.connection;
 
-// Define middleware here
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-// Use Routes
-app.use('/api/client', client);
-app.use('/api/service', service);
-app.use('/api/serviceprovider', serviceprovider);
-app.use('/api/user', user);
-
 // use sessions for tracking logins
 app.use(session({
   secret: 'SECRET',
@@ -54,6 +44,23 @@ app.use(session({
     mongooseConnection: db
   })
 }));
+
+
+
+// Define middleware here
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+
+
+// Use Routes
+app.use('/api/client', client);
+app.use('/api/service', service);
+app.use('/api/serviceprovider', serviceprovider);
+app.use('/api/user', user);
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

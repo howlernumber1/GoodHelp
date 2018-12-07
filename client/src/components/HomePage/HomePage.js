@@ -8,7 +8,7 @@ const HomePage = () => (
 
 <div className="jumbotron">
 
-<h1 className="display-4">Welcome to <span class="title">GoodHelp</span></h1>
+<h1 className="display-4">Welcome to <span className="title">GoodHelp</span></h1>
 <p className="lead">They say "Good Help" is hard to find...well, not anymore. </p>
 <hr className="my-4"/>
 <p>Search within our large list of credited and reliable businesses to find the right one for your property management needs.</p>
@@ -20,7 +20,7 @@ const HomePage = () => (
 
 {/* search section */}
 
-<div className="searchSection">  
+<div className="searchSection">
     <h4>Looking for a specific service provider?</h4>
     <p>Search here:</p>
     <form className="form-inline">
@@ -64,9 +64,9 @@ const HomePage = () => (
           <a href="boat" className="btn btn-primary iconBtn">View Businesses</a>
         </div>
       </div>
-   
+
     <br />
-    
+
       <div className="card col-3">
         <img className="card-img-top img-fluid" src=".../100px200/" alt="housekeeping" />
         <div className="card-body">
