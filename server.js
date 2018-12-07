@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const client = require('./routes/api/Client');
+const service = require('./routes/api/Service');
+const serviceprovider = require('./routes/api/ServiceProvider');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -31,6 +34,11 @@ var db = mongoose.connection;
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Use Routes
+app.use('/api/client', client);
+app.use('/api/service', service);
+app.use('/api/serviceprovider', serviceprovider);
 
 //use sessions for tracking logins
 app.use(session({
@@ -74,3 +82,19 @@ db.once('open', function() {
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+
+
+
+// DB Config
+const db = require('./config/keys').mongoURI;
+
+// Connect to MongoDB
+mongoose
+    .connect(db)
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
+
+
+
+
+

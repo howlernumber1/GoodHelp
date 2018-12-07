@@ -1,0 +1,97 @@
+.jumbotron {
+    background-color: teal;
+}
+
+.jumbotron h1 {
+    color: white;
+    text-align: center;
+}
+
+.jumbotron p {
+    text-align: center;
+}
+
+.wrapper {
+    background-color: #f8f8f6;
+}
+
+.navbar  {
+    background-color: teal;
+}
+
+
+a {
+    color: black;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+a :hover {
+    color:white;
+}
+
+.footer {
+    background-color: teal;
+    color: black;
+    height: 40px;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.navbar-brand {
+    color:#fac61a; 
+      font-family: KateCelebration;
+}
+
+.btn  {
+    background-color: white;
+    color: teal;
+    border: 1px solid black;
+    align-content: center;
+    
+}
+
+/* .btn :hover {
+    background-color: teal;
+    color: white;
+    border: 1px solid black;
+} */
+
+.title {
+    font-family: KateCelebration;
+    color: #fac61a;
+}
+
+.searchSection {
+
+text-align: center;
+
+}
+
+input {
+    align-content: center;
+}
+.card {
+    border: 1px solid #fac61a;
+   
+}
+
+.iconBtn {
+    background-color: teal;
+    color: white;
+    border: 1px solid black;
+}
+
+.card-title {
+    font-family: 'Nunito', sans-serif;
+    /* font-family: 'Dosis', sans-serif;
+font-family: 'Text Me One', sans-serif; */
+}
+
+/* img {
+
+    max-width: 100%;
+    height: auto;
+
+} */
+
