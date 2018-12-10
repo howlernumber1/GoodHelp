@@ -7,7 +7,9 @@ class Login extends React.Component {
   constructor () {
     super();
     this.state = {
-      showModal: false
+      showModal: false,
+      loginEmail: '',
+      loginPassword: ''
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -22,6 +24,22 @@ class Login extends React.Component {
     this.setState({ showModal: false });
   }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  login = (event) => {
+    event.preventDefault();
+     const loginUser = {
+       email: this.state.loginEmail,
+       password: this.state.loginPassword
+     }
+     console.log(loginUser)
+     this.handleCloseModal()
+  }
+
   render () {
     return (
       <div>
@@ -31,18 +49,18 @@ class Login extends React.Component {
            contentLabel="Minimal Modal Example"
         >
         <form>
-          <div class="form-group">
+          <div className="form-group">
             <label htmlFor="InputEmail">Email address:</label>
-            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
+            <input type="email" className="form-control" onChange={this.handleChange} name = "loginEmail" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label htmlFor="InputPassword">Password:</label>
-            <input type="password" class="form-control" id="InputPassword" placeholder="Password"/>
+            <input type="password" className="form-control" onChange={this.handleChange} name = "loginPassword" id="InputPassword" placeholder="Password"/>
           </div>
           {/* <button type="submit" class="btn btn-primary">Submit</button>*/}
         </form>
 
-          <button className="btn btn-primary" onClick={this.handleCloseModal}>Login</button>
+          <button className="btn btn-primary" onClick={this.login}>Login</button>
         </ReactModal>
       </div>
     );

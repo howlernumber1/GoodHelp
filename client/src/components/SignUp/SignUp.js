@@ -7,7 +7,12 @@ class SignUp extends React.Component {
   constructor () {
     super();
     this.state = {
-      showModal: false
+      showModal: false,
+      signUpEmail: '',
+      signUpUsername: '',
+      signUpPassword: '',
+      signUpConfirm: '',
+      typeOfClient: 'customer'
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -22,6 +27,24 @@ class SignUp extends React.Component {
     this.setState({ showModal: false });
   }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  signup = (event) => {
+    event.preventDefault();
+    const newUser = {
+      email: this.state.signUpEmail,
+      username: this.state.signUpUsername,
+      password: this.state.signUpPassword,
+      confirm: this.state.signUpConfirm,
+    }
+    console.log(newUser)
+    this.handleCloseModal()
+  }
+
   render () {
     return (
       <div>
@@ -31,27 +54,55 @@ class SignUp extends React.Component {
            contentLabel="Minimal Modal Example"
         >
         <form>
-          <div class="form-group">
+        <label htmlFor="typeOfClient">What are you?</label>
+          <select name="typeOfClient" onChange={this.handleChange} className="form-control" defaultValue="customer">
+            <option value="customer">Customer</option>
+            <option value="provider">Provider</option>
+          </select>
+          {this.state.typeOfClient === "customer" ?
+          <div>
+          <div className="form-group">
             <label htmlFor="InputEmail">Email address:</label>
-            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input type="email" name="signUpEmail" onChange={this.handleChange} className="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
+            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label htmlFor="InputUsername">Username:</label>
-            <input type="text" class="form-control" id="InputUsername" placeholder="Username"/>
+            <input type="text" name="signUpUsername" onChange={this.handleChange} className="form-control" id="InputUsername" placeholder="Username"/>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label htmlFor="InputPassword">Password:</label>
-            <input type="password" class="form-control" id="InputPassword" placeholder="Password"/>
+            <input type="password" name="signUpPassword" onChange={this.handleChange} className="form-control" id="InputPassword" placeholder="Password"/>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label htmlFor="PasswordConf">Confirm Password:</label>
-            <input type="password" class="form-control" id="PasswordConf" placeholder="Password"/>
+            <input type="password" name="signUpConfirm" onChange={this.handleChange} className="form-control" id="PasswordConf" placeholder="Password"/>
           </div>
-          {/* <button type="submit" class="btn btn-primary">Submit</button>*/}
+          {/* <button type="submit" class="btn btn-primary">Submit</button> */}
+          </div>
+          : 
+          <div>
+                      <div className="form-group">
+            <label htmlFor="InputEmail">Business Name</label>
+            <input type="email" name="signUBusinessName" onChange={this.handleChange} className="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Required"/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="InputUsername">Username:</label>
+            <input type="text" name="signUpUsername" onChange={this.handleChange} className="form-control" id="InputUsername" placeholder="Username"/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="InputPassword">Password:</label>
+            <input type="password" name="signUpPassword" onChange={this.handleChange} className="form-control" id="InputPassword" placeholder="Password"/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="PasswordConf">Confirm Password:</label>
+            <input type="password" name="signUpConfirm" onChange={this.handleChange} className="form-control" id="PasswordConf" placeholder="Password"/>
+          </div>
+          </div>
+        }
         </form>
 
-          <button className="btn btn-primary" onClick={this.handleCloseModal}>Register</button>
+          <button className="btn btn-primary" onClick={this.signup}>Register</button>
         </ReactModal>
       </div>
     );
