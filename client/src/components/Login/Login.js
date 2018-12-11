@@ -52,33 +52,19 @@ class Login extends React.Component {
           isOpen={this.state.showModal}
           contentLabel="Minimal Modal Example"
         >
-          <form>
+        <form>
           <button className="close-float btnLink" onClick={this.handleCloseModal}><FontAwesomeIcon icon={faTimes} size="1x" /></button>
-            <div className="form-group">
-              <label htmlFor="InputEmail">Email address:</label>
-              <input
-                type="email"
-                className="form-control"
-                onChange={this.handleChange}
-                name="loginEmail"
-                id="InputEmail"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="InputPassword">Password:</label>
-              <input
-                type="password"
-                className="form-control"
-                onChange={this.handleChange}
-                name="loginPassword"
-                id="InputPassword"
-                placeholder="Password"
-              />
-            </div>
-            {/* <button type="submit" class="btn btn-primary">Submit</button>*/}
-          </form>
+          <br></br>
+          <div className="form-group">
+            <label htmlFor="InputEmail">Email address:</label>
+            <input type="email" className="form-control" onChange={this.handleChange} name = "loginEmail" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="InputPassword">Password:</label>
+            <input type="password" className="form-control" onChange={this.handleChange} name = "loginPassword" id="InputPassword" placeholder="Password"/>
+          </div>
+          {/* <button type="submit" class="btn btn-primary">Submit</button>*/}
+        </form>
 
           <button className="btn btn-primary" onClick={this.login}>
             Login

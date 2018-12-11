@@ -1,7 +1,7 @@
 import React from "react";
 import TableRow from "./TableRow";
-import { Link } from "react-router-dom";
-import ServiceReview from "./ServiceReviewModal";
+// import { Link } from "react-router-dom";
+// import ServiceReview from "./ServiceReviewModal";
 import ProviderSummary from "../ProviderSummary/ProviderSummary";
 import UserProfile from "./UserProfile";
 

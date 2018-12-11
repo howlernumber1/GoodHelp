@@ -1,6 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
-import UserPage from "./UserPage";
+// import UserPage from "./UserPage";
 ReactModal.setAppElement("#root");
 
 // import { Link } from "react-router-dom";

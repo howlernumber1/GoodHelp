@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Open from '../Requests/Open';
-import Closed from '../Requests/Closed';
+// import Open from '../Requests/Open';
+// import Closed from '../Requests/Closed';
 
 
 class Pending extends Component {
@@ -40,8 +40,8 @@ class Pending extends Component {
     Pending
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Open</a>
-    <a class="dropdown-item" href="#">Closed</a>
+    {/* <a class="dropdown-item" href="#">Open</a>
+    <a class="dropdown-item" href="#">Closed</a> */}
   </div>
 </div>
                         </td>
