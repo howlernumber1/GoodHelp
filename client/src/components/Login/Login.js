@@ -66,9 +66,7 @@ class Login extends React.Component {
           {/* <button type="submit" class="btn btn-primary">Submit</button>*/}
         </form>
 
-          <button className="btn btn-primary" onClick={this.login}>
-            Login
-          </button>
+          <button className="btn btn-primary" onClick={this.login.bind(this)}>Login</button>
         </ReactModal>
       </div>
     );
