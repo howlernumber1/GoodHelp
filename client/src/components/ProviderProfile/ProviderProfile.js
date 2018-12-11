@@ -14,27 +14,27 @@ class ProviderProfile extends Component {
         statusRequest: ""
     };
 
-  
 
 
-    render() {
 
-        return (
-            <div className="provider-profile">
-
-                <Provider
-                    providerName={this.state.providerName}
-                    img={this.state.img}
-                    alt={this.state.alt}
-                    statusRequest={this.state.statusRequest}
-                />
-
-            </div>
-
-
-        );
-    };
-}
+//     render() {
+//
+//         return (
+//             <div className="provider-profile">
+//
+//                 <Provider
+//                     providerName={this.state.providerName}
+//                     img={this.state.img}
+//                     alt={this.state.alt}
+//                     statusRequest={this.state.statusRequest}
+//                 />
+//
+//             </div>
+//
+//
+//         );
+//     };
+// }
 
     // handleRequestChange = (event) => (
     //     this.setState(
@@ -61,13 +61,13 @@ class ProviderProfile extends Component {
 
         return (
             <div className="provider-profile">
-            
-           <Provider  
+
+           <Provider
            providerName={this.state.providerName}
            img=  {this.state.img}
            alt={this.state.alt}
-        //   if (statusReques)  {this.state.statusRequest.open} 
-           
+        //   if (statusReques)  {this.state.statusRequest.open}
+
            />
 
             </div>
