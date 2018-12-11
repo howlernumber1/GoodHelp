@@ -1,64 +1,127 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
+const gravatar = require('gravatar');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const keys = require('../../config/keys');
 const passport = require('passport');
 
-// Load Users model
-const users = require('../../models/Users');
+// Load Input Validation
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
-// Load ServiceProvider model 
-const serviceprovider = require('../../models/ServiceProvider');
+// Load User model
+const User = require('../../models/Users');
 
-// Load Client model
-const client = require('../../models/Client');
+// @route   GET api/users/test
+// @desc    Tests users route
+// @access  Public
+router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
 
-// @route   GET  api/profile/test
-// @desc    TESTS profile route
-// @access  PUBLIC
+// @route   POST api/users/register
+// @desc    Register user
+// @access  Public
+router.post('/register', (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
 
-router.get('/test', (req, res) => res.json({
-    msg: 'Login Works!'
-}));
+  // Check Validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
 
-// @route   GET  api/profile
-// @desc    GET current users profile
-// @access  PRIVATE
-router.get('/',
-    passport.authenticate('jwt', {
-        session: false
-    }),
-    (req, res) => {
-        const errors = {};
+  User.findOne({ email: req.body.email }).then(user => {
+    if (user) {
+      errors.email = 'Email already exists';
+      return res.status(400).json(errors);
+    } else {
+      const avatar = gravatar.url(req.body.email, {
+        s: '200', // Size
+        r: 'pg', // Rating
+        d: 'mm' // Default
+      });
 
-        Client.findOne({
-                user: req.user.id
-            })
-            .then(profile => {
-                if (!profile) {
-                    errors.noprofile = 'There is no profile for this user!';
-                    return res.status(400).json(errors);
-                }
-                res.json(profile);
-            })
-            .catch(err => res.status(404).json(err));
-    });
+      const newUser = new User({
+        name: req.body.name,
+        email: req.body.email,
+        avatar,
+        password: req.body.password
+      });
 
-// @route   POST  api/profile
-// @desc    Create or edit user profile
-// @access  PRIVATE
-router.post('/',
-    passport.authenticate('jwt', {
-        session: false
-    }),
-    (req, res) => {
-        // Get fields
-        const profileFields = {};
-        profileFields.user = req.user.id;
-        if (req.body.handle) profileFields.handle = req.body.handle;
-        if (req.body.name) profileFields.name = req.body.name;
-        if (req.body.phone) profileFields.phone = req.body.phone;
-        if (req.body.email) profileFields.email = req.body.email;
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
+        });
+      });
     }
+  });
+});
+
+// @route   GET api/users/login
+// @desc    Login User / Returning JWT Token
+// @access  Public
+router.post('/login', (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  // Check Validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  const email = req.body.email;
+  const password = req.body.password;
+
+  // Find user by email
+  User.findOne({ email }).then(user => {
+    // Check for user
+    if (!user) {
+      errors.email = 'User not found';
+      return res.status(404).json(errors);
+    }
+
+    // Check Password
+    bcrypt.compare(password, user.password).then(isMatch => {
+      if (isMatch) {
+        // User Matched
+        const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
+
+        // Sign Token
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: 3600 },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: 'Bearer ' + token
+            });
+          }
+        );
+      } else {
+        errors.password = 'Password incorrect';
+        return res.status(400).json(errors);
+      }
+    });
+  });
+});
+
+// @route   GET api/users/current
+// @desc    Return current user
+// @access  Private
+router.get(
+  '/current',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      name: req.user.name,
+      email: req.user.email
+    });
+  }
 );
 
 module.exports = router;
