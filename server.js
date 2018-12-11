@@ -9,23 +9,12 @@ const profile = require('./routes/api/profile');
 const services = require('./routes/api/services');
 
 const app = express();
+const PORT = process.env.PORT || 5001;
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(MongoClient.mongoose( {useNewUrlParser: true}))
-
-// DB Config
-const db = require('./config/keys').mongoURI;
-
-// Connect to MongoDB
-mongoose
-  // .MongoClient.connect(
-  //   {useNewUrlParser: true}
-  //   )
-  .connect(db)
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
 
 // Passport middleware
 app.use(passport.initialize());
@@ -38,6 +27,9 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/services', services);
 
+// DB Config
+const db = require('./config/keys').mongoURI;
+
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
@@ -48,6 +40,35 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const port = process.env.PORT || 5001;
+// -----------------Database configuration with Mongoose---------------
+// -----------------Define local MongoDB URI---------------
+var databaseUri = 'mongodb://localhost/goodhelpApp';
+//------------------------------------------------
+if (process.env.MONGODB_URI) {
+//THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+//THIS EXECUTES IF THIS IS BEING EXECUTED ON YOUR LOCAL MACHINE
+  mongoose.connect(databaseUri);
+}
+//-----------------End database configuration-------------------------
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+// var db = mongoose.connection;
+
+
+// show any mongoose errors
+db.on('error', function(err) {
+  console.log('Mongoose Error: ', err);
+})
+
+
+//once logged in to the db through mongosse, log a success message
+db.once('open', function() {
+  console.log('Mongoose connection sucessful.');
+})
+
+
+// Start the API server
+app.listen(PORT, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+});
