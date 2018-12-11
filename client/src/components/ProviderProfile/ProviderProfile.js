@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Provider from '../ProviderProfile/Providers';
 
-const ProviderProfile= () => (
 
-<div>Provider Profile Page</div>
 
-)
+
+class ProviderProfile extends Component {
+
+    state = {
+
+        providerName: "Google Inc.",
+        img: "./images/google.jpg",
+        alt: "google office with their colored logo and a bike out front",
+        statusRequest: ""
+    };
+
+  
+
+
+    render() {
+
+        return (
+            <div className="provider-profile">
+
+                <Provider
+                    providerName={this.state.providerName}
+                    img={this.state.img}
+                    alt={this.state.alt}
+                    statusRequest={this.state.statusRequest}
+                />
+
+            </div>
+
+
+        );
+    };
+}
+
 
 
 export default ProviderProfile;

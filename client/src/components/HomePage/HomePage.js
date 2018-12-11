@@ -7,6 +7,8 @@ class HomePage extends Component {
     providerSearchInput: ''
   }
 
+  //functions change of state and click function connected to the search button//
+
   handleProviderSearchChange = (event) => (
     this.setState(
       {
@@ -19,6 +21,8 @@ class HomePage extends Component {
     event.preventDefault();
     console.log(this.state.providerSearchInput)
   }
+
+  //function connected to the service category buttons//
 
   handleServiceClick = (event) => {
     event.preventDefault();
