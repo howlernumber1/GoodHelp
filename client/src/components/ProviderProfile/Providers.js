@@ -1,5 +1,5 @@
 import React from 'react';
-import Requests from '../Requests/Requests';
+// import Requests from '../Requests/Requests';
 
 
 const Provider = (props) => (
@@ -20,11 +20,11 @@ const Provider = (props) => (
             <div className="menu col-3">
 
                 <h3 className="menu-title">Service Requests</h3>
-                <a className="menu-item" onClick={props.handleRequestClick1} value={props.open} href="#" >Open Requests</a>
+                <a className="menu-item" onClick={props.handleRequestClick1} value={props.open} href="/requests" >Open Requests</a>
                 <br />
-                <a className="menu-item" onClick={props.handleRequestClick2} value={props.pending} href="#" >Pending Requests</a>
+                <a className="menu-item" onClick={props.handleRequestClick2} value={props.pending} href="/requests" >Pending Requests</a>
                 <br />
-                <a className="menu-item" onClick={props.handleRequestClick3} value={props.closed} href="#" >Closed Requests</a>
+                <a className="menu-item" onClick={props.handleRequestClick3} value={props.closed} href="/requests" >Closed Requests</a>
             </div>
 
 
@@ -61,9 +61,9 @@ const Provider = (props) => (
                                     <div className="input-group-append">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
                                         <div className="dropdown-menu">
-                                            <a className="dropdown-item" selected href="#" status={props.open}>Open</a>
-                                            <a className="dropdown-item" status={props.pending} href="#">Pending</a>
-                                            <a className="dropdown-item" status={props.closed} href="#">Closed</a>
+                                            <a className="dropdown-item" selected href="/requests" status={props.open}>Open</a>
+                                            <a className="dropdown-item" status={props.pending} href="/requests">Pending</a>
+                                            <a className="dropdown-item" status={props.closed} href="/requests">Closed</a>
                                         </div>
                                     </div>
                                 </div>

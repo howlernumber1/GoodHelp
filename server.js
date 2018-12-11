@@ -13,12 +13,16 @@ const app = express();
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+// app.use(MongoClient.mongoose( {useNewUrlParser: true}))
 
 // DB Config
 const db = require('./config/keys').mongoURI;
 
 // Connect to MongoDB
 mongoose
+  // .MongoClient.connect(
+  //   {useNewUrlParser: true}
+  //   )
   .connect(db)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
@@ -44,6 +48,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
-// app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));

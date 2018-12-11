@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Provider from '../ProviderProfile/Providers';
-import Requests from '../Requests/Requests';
+// import Requests from '../Requests/Requests';
 
 
 
