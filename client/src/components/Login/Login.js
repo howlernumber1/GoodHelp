@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import  { faTimes }  from '@fortawesome/free-solid-svg-icons';
 ReactModal.setAppElement('#root');
 
 
@@ -49,6 +51,8 @@ class Login extends React.Component {
            contentLabel="Minimal Modal Example"
         >
         <form>
+          <button className="close-float btnLink" onClick={this.handleCloseModal}><FontAwesomeIcon icon={faTimes} size="1x" /></button>
+          <br></br>
           <div className="form-group">
             <label htmlFor="InputEmail">Email address:</label>
             <input type="email" className="form-control" onChange={this.handleChange} name = "loginEmail" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
