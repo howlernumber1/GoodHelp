@@ -93,7 +93,7 @@ class SignUp extends React.Component {
   addService = (e) => {
     e.preventDefault();
     let Array = this.state.serviceButton
-    Array.push(<serviceProvided />)
+    Array.push(<ServiceProvided />)
     this.setState({
       serviceButton: Array
     })
