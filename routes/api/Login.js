@@ -3,21 +3,15 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-// Load Users model
-const users = require('../../models/Users');
-
-// Load ServiceProvider model 
-const serviceprovider = require('../../models/ServiceProvider');
-
-// Load Client model
+// Load Profile model
 const profile = require('../../models/Profile');
 
 // @route   GET  api/profile/test
 // @desc    TESTS profile route
-// @access  PUBLICs
+// @access  PUBLIC
 
 router.get('/test', (req, res) => res.json({
-    msg: 'Profile Works!'
+    msg: 'Login Works!'
 }));
 
 // @route   GET  api/profile
@@ -48,7 +42,7 @@ router.get('/',
 // @access  PRIVATE
 router.post('/',
     passport.authenticate('jwt', {
-        session: true
+        session: false
     }),
     (req, res) => {
         // Get fields

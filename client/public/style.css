@@ -1,7 +1,6 @@
 .jumbotron {
     background-color: teal;
     height: 700px;
-   
 }
 
 .jumbotron h1 {
@@ -144,6 +143,7 @@ font-family: 'Nunito', sans-serif;
     border: 1px solid;  
     max-width: 300px;
     margin-left: 50px;
+
     margin-top: 20px;
     padding-top: 30px;
 }

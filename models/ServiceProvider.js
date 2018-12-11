@@ -1,35 +1,48 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var ServiceProviderSchema = new Schema({
-    business_name: String,
-    services_provided: [
-        {
-            description: String
-        }
-    ],
-    areas_serviced: [
-        {
-            location: String
-        }
-    ],
-    reviews: [
-        {
-            review_body: String
-        }
-    ],
-    ratings: [
-        {
-            number_of_stars: String
-        }
-    ],
-    years_of_experience: String,
-    website_link: String,
-    phone: String,
-    email: String
+// Create Schema
+const ServiceProviderSchema = new Schema({
+    business_name: {
+        type: Schema.Types.ObjectId,
+        ref: 'services'
+    },
+    handle: {
+        type: String,
+        required: true,
+        max: 40
+    },
+    services_provided: {
+            type: [String],
+            required: true,
+    }, 
+    areas_serviced: {
+            type: [String],
+            required: true
+    },
+    reviews: {
+            type: [String]
+    },
+    ratings: {
+            type: String,
+            required: true
+    },
+    years_of_experience: {
+        type: Number,
+        required: true
+    },
+    website_link: {
+        type: String
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
 
 });
 
-const ServiceProvider = mongoose.model('ServiceProvider', ServiceProviderSchema);
-
-module.exports = ServiceProvider;
+module.exports = ServiceProvider = mongoose.model('serviceprovider', ServiceProviderSchema);
