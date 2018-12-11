@@ -44,13 +44,13 @@ if (process.env.NODE_ENV === 'production') {
 // -----------------Define local MongoDB URI---------------
 // var databaseUri = 'mongodb://localhost/goodhelpApp';
 //------------------------------------------------
-if (process.env.MONGODB_URI) {
-//THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-//THIS EXECUTES IF THIS IS BEING EXECUTED ON YOUR LOCAL MACHINE
-  mongoose.connect(databaseUri);
-}
+// if (process.env.MONGODB_URI) {
+// //THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
+//   mongoose.connect(process.env.MONGODB_URI);
+// } else {
+// //THIS EXECUTES IF THIS IS BEING EXECUTED ON YOUR LOCAL MACHINE
+//   mongoose.connect(databaseUri);
+// }
 //-----------------End database configuration-------------------------
 
 // var db = mongoose.connection;
