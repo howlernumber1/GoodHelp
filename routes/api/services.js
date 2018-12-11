@@ -6,5 +6,14 @@ const router = express.Router();
 // @access Public
 router.get('/test', (req, res) => res.json({msg: "Services Works!"}));
 
-module.exports = router;
+router.get('/', function(req, res) {
+  Services.find({})
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
 
+module.exports = router;
