@@ -28,7 +28,7 @@ app.use('/api/profile', profile);
 app.use('/api/services', services);
 
 // DB Config
-// const db = require('./config/keys').mongoURI;
+const db = require('./config/keys').mongoURI;
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {
@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // -----------------Database configuration with Mongoose---------------
 // -----------------Define local MongoDB URI---------------
-var databaseUri = 'mongodb://localhost/goodhelpApp';
+// var databaseUri = 'mongodb://localhost/goodhelpApp';
 //------------------------------------------------
 if (process.env.MONGODB_URI) {
 //THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
@@ -53,7 +53,7 @@ if (process.env.MONGODB_URI) {
 }
 //-----------------End database configuration-------------------------
 
-var db = mongoose.connection;
+// var db = mongoose.connection;
 
 
 // show any mongoose errors
