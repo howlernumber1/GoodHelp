@@ -2,6 +2,15 @@
 import React from 'react';
 import $ from 'axios';
 
+const service = (props) => (
+  <div>
+    <p>{props.category}</p>
+    <p>{props.description}</p>
+  </div>
+)
+
+
+
     class Services extends React.Component {
 
         state = {
@@ -39,7 +48,12 @@ import $ from 'axios';
                                 <h1 className="display-4 text-center">Services</h1>
                                 <p></p>
                             </div>
-                            <div getServices={this.getServices}></div>
+                            {this.state.services.map(service => (
+                              <service>
+                                {service.category}
+                                {service.description}
+                              </service>
+                            ))}
                         </div>
                     </div>
                 </div>
