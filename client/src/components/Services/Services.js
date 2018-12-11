@@ -39,7 +39,7 @@ import $ from 'axios';
                                 <h1 className="display-4 text-center">Services</h1>
                                 <p></p>
                             </div>
-                            <div>Services</div>
+                            <div getServices={this.getServices}></div>
                         </div>
                     </div>
                 </div>
