@@ -101,7 +101,7 @@ class UserPage extends React.Component {
                             {
                                 fakeData.map(item => {
 
-                                    return <TableRow onClick={this.handleOnClick} data={item} />
+                                    return <TableRow key={item.id} onClick={this.handleOnClick} data={item} />
                                 })
                             }
 
@@ -110,21 +110,21 @@ class UserPage extends React.Component {
                 </div>
 
                 {/* <!-- Review Modal --> */}
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 Modal body
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
@@ -133,36 +133,36 @@ class UserPage extends React.Component {
 
 
                 {/* <!-- User Info Modal --> */}
-                <div class="modal fade" id="userInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">customer Information</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal fade" id="userInfoModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">customer Information</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 <form>
                                 <img className="rounded-circle" src="//www.gravatar.com/avatar/8cb7902f0a6c100e16cd43f97c0cf0f7?s=200&amp;rating=pg&amp;default=mm" alt=""></img>
                                     <div className="form-group">
-                                        <label for="inputName">Name</label>
+                                        <label htmlFor="inputName">Name</label>
                                         <input type="text" className="form-control" id="inputName" placeholder="Full Name"></input>
                                     </div>
                                     <div className="form-group">
-                                        <label for="inputPhone">Phone</label>
+                                        <label htmlFor="inputPhone">Phone</label>
                                         <input type="text" className="form-control" id="inputPhone" placeholder="Phone Number"></input>
                                     </div>
                                     <div className="form-group">
-                                        <label for="inputPhone">Email</label>
+                                        <label htmlFor="inputPhone">Email</label>
                                         <input type="text" className="form-control" id="inputEmail" placeholder="Email"></input>
                                     </div>
 
                                     </form>
                                             </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary">Save changes</button>
                                 </div>
                             </div>
                         </div>
