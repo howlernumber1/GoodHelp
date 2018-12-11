@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const ServiceProviderSchema = new Schema({
     business_name: {
         type: Schema.Types.ObjectId,
-        ref: 'service'
+        ref: 'services'
     },
     handle: {
         type: String,

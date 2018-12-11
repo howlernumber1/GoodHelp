@@ -3,14 +3,8 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-// Load Users model
-const users = require('../../models/Users');
-
-// Load ServiceProvider model 
-const serviceprovider = require('../../models/ServiceProvider');
-
-// Load Client model
-const client = require('../../models/Client');
+// Load Profile model
+const profile = require('../../models/Profile');
 
 // @route   GET  api/profile/test
 // @desc    TESTS profile route
@@ -30,7 +24,7 @@ router.get('/',
     (req, res) => {
         const errors = {};
 
-        Client.findOne({
+        Customer.findOne({
                 user: req.user.id
             })
             .then(profile => {
