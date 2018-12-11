@@ -5,8 +5,16 @@ ReactModal.setAppElement('#root');
 const AreaButton = (props) => (
   <div className="form-group">
     <label htmlFor="areaServiced">Areas Serviced:</label>
-    <input name="areasServiced" type="text" onChange={props.handleChange} className="form-control" placeholder="Required" />
-    <button key={props.key} onClick={props.addArea}>+</button>
+    <input name="areasServiced" type="text" value={props.newArrayItem} onChange={props.handleChange} className="form-control" placeholder="Required" />
+    <button className="d-inline float-right" key={props.key} onClick={props.addArea}>+</button>
+  </div>
+)
+
+const ServiceProvided = (props) => (
+  <div className="form-group">
+    <label htmlFor="serviceProvided">Service Provided:</label>
+    <input name="servicesProvided" type="text" onChange={props.handleChange} className="form-control" placeholder="Required" />
+    <button className="d-inline float-right" key={props.key} onClick={props.addService}>+</button>
   </div>
 )
 
@@ -14,6 +22,7 @@ class SignUp extends React.Component {
   constructor() {
     super();
     this.state = {
+      newArrayItem: '',
       showModal: false,
       signUpEmail: '',
       signUpUsername: '',
@@ -22,12 +31,16 @@ class SignUp extends React.Component {
       typeOfClient: 'customer',
       businessName: '',
       servicesProvided: [],
+      areasServiced: [],
       yearsOfExperience: '',
       websiteLink: '',
       businessPhone: '',
       businessEmail: '',
       areasButton: [
         <AreaButton />
+      ],
+      serviceButton: [
+        <serviceProvided />
       ]
     };
 
@@ -49,22 +62,22 @@ class SignUp extends React.Component {
     })
   }
 
-  onCheckChange = (e) => {
-    const services = this.state.servicesProvided
-    let index
-
-    if (e.target.checked) {
-      // add the numerical value of the checkbox to options array
-      services.push(e.target.value)
-    } else {
-      // or remove the value from the unchecked checkbox from the array
-      index = services.indexOf(+e.target.value)
-      services.splice(index, 1)
+    handleArrayChange= (event) => {
+      event.preventDefault();
+      const newArrayItem = this.state.newArrayItem
+      this.setState({
+        newArrayItem: event.target.value
+      })
     }
 
-    // update the state with the new array of options
-    this.setState({ servicesProvided: services })
-  }
+    pushItem = () => {
+      const newArrayItem = this.state.newArrayItem
+      const newArray = this.state.servicesProvided;
+      const newerArray = newArray.concat(newArrayItem)
+      this.setState({
+        servicesProvided: newerArray
+      })
+    }
 
   addArea = (e) => {
     e.preventDefault();
@@ -72,6 +85,15 @@ class SignUp extends React.Component {
     Array.push(<AreaButton />)
     this.setState({
       areasButton: Array
+    })
+  }
+
+  addService = (e) => {
+    e.preventDefault();
+    let Array = this.state.serviceButton
+    Array.push(<serviceProvided />)
+    this.setState({
+      serviceButton: Array
     })
   }
 
@@ -89,10 +111,11 @@ class SignUp extends React.Component {
       const newProvider = {
         business_name: this.state.businessName,
         services_provided: this.state.servicesProvided,
+        areas_serviced: this.state.areasServiced,
         years_of_experience: this.state.yearsOfExperience,
         website_link: this.state.websiteLink,
         phone: this.state.businessPhone,
-        email: this.state.businessEmail
+        email: this.state.businessEmail,
       }
       console.log(newProvider)
     }
@@ -140,55 +163,9 @@ class SignUp extends React.Component {
                   <label htmlFor="InputEmail">Business Name</label>
                   <input name="businessName" type="email" onChange={this.handleChange} className="form-control" aria-describedby="emailHelp" placeholder="Required" />
                 </div>
-                <label htmlFor="InputUsername">Services Provided</label>
-                <div onChange={this.onCheckChange} name="servicesProvided" className="form-check">
-                  <input className="form-check-input" type="checkbox" value="Auto Services" />
-                  <label className="form-check-label" value="Auto Services">
-                    Auto Services
-                   </label>
-                </div>
-                <div onChange={this.onCheckChange} name="servicesProvided" className="form-check">
-                  <input className="form-check-input" type="checkbox" value="Assembly Services" />
-                  <label className="form-check-label" value="Assembly Services">
-                    Assembly Services
-                   </label>
-                </div>
-                <div onChange={this.onCheckChange} name="servicesProvided" className="form-check">
-                  <input className="form-check-input" type="checkbox" value="Boat Services" />
-                  <label className="form-check-label" value="Boat Services">
-                    Boat Services
-                   </label>
-                </div>
-                <div onChange={this.onCheckChange} name="servicesProvided" className="form-check">
-                  <input className="form-check-input" type="checkbox" value="Cleaning Services" />
-                  <label className="form-check-label" value="Cleaning Services">
-                    Cleaning Services
-                   </label>
-                </div>
-                <div onChange={this.onCheckChange} name="servicesProvided" className="form-check">
-                  <input className="form-check-input" type="checkbox" value=" Delivery and Pick Up / Moving Services" />
-                  <label className="form-check-label" value=" Delivery and Pick Up / Moving Services">
-                    Delivery and Pick Up / Moving Services
-                   </label>
-                </div>
-                <div onChange={this.onCheckChange} name="servicesProvided" className="form-check">
-                  <input className="form-check-input" type="checkbox" value="Electrical Services" />
-                  <label className="form-check-label" value="Electrical Services">
-                    Electrical Services
-                   </label>
-                </div>
-                <div onChange={this.onCheckChange} name="servicesProvided" className="form-check">
-                  <input className="form-check-input" type="checkbox" value="HVAC Services" />
-                  <label className="form-check-label" value="HVAC Services">
-                    HVAC Services
-                   </label>
-                </div>
-                <div onChange={this.onCheckChange} name="servicesProvided" className="form-check">
-                  <input className="form-check-input" type="checkbox" value="Landscaping and Lawn Services" />
-                  <label className="form-check-label" value="Landscaping and Lawn Services">
-                    Landscaping and Lawn Services
-                  </label>
-                </div>
+                {this.state.serviceButton.map((eachField, i) => (
+                  <ServiceProvided key={i} value={this.state.newArrayItem} addService={this.addService} handleChange={this.handleArrayChange} />
+                ))}
                 {this.state.areasButton.map((eachField, i) => (
                   <AreaButton key={i} addArea={this.addArea} handleChange={this.handleChange} />
                 ))}
