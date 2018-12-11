@@ -27,6 +27,7 @@ class Open extends Component {
                         </tr>
                     </thead>
                     <tbody>
+                        {/* these items need a model maybe? or something that can be used to connect to the sumbit button on the providers page that the users use to submit their requests. I put an idea for them below that arent the actually being used so make them whatever you need */}
                         <tr>
                             {/* {props.invoiceNumber} */}
                             <th scope="row">1</th>
@@ -40,13 +41,14 @@ class Open extends Component {
                               {/* buttons on click move it to the corresponding table */}
            
                             <td>
+                                 {/* Drop-down (pending and closed) buttons need a remove and post request to remove the ask connect to it from this open page and add it to the corresponding closed or pending tables  */}
                             <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Open
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Pending</a>
-    <a class="dropdown-item" href="#">Closed</a>
+    <a class="dropdown-item" href="#" id="pending">Pending</a>
+    <a class="dropdown-item" href="#" id="closed">Closed</a>
   </div>
 </div>
                           </td>

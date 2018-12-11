@@ -27,6 +27,7 @@ class Pending extends Component {
                         </tr>
                     </thead>
                     <tbody>
+                        {/* these items need a model maybe? or something that can be used to connect to the sumbit button on the providers page that the users use to submit their requests. I put an idea for them below that arent the actually being used so make them whatever you need */}
                         <tr>
                             {/* {props.invoiceNumber} */}
                             <th scope="row">1</th>
@@ -35,13 +36,15 @@ class Pending extends Component {
                             {/* {props.task} */}
                             <td>Fix clogged shower drain</td>
                             <td>
+
+                                {/* Drop-down (open and closed) buttons need a remove and post request to remove the ask connect to it from this pending page and add it to the corresponding closed or open tables  */}
                             <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Pending
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    {/* <a class="dropdown-item" href="#">Open</a>
-    <a class="dropdown-item" href="#">Closed</a> */}
+    <a class="dropdown-item" href="#" id="open">Open</a>
+    <a class="dropdown-item" href="#" id="closed">Closed</a>
   </div>
 </div>
                         </td>
