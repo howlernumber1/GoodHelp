@@ -54,7 +54,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
 
-          <header>
+        {/*  <header>
             <nav className="navbar">
               <p className="navbar-brand"> GoodHelp</p>
               <span>
@@ -66,7 +66,7 @@ class App extends Component {
               </span>
 
             </nav>
-          </header>
+          </header> */}
 
           <Route component={Header} />
 
