@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var ServiceSchema = new Schema ({
+var ServicesSchema = new Schema ({
     category: String,
     description: String
 });
 
-const Service = mongoose.model('Service', ServiceSchema);
+const Services = mongoose.model('Services', ServicesSchema);
 
-module.exports = Service;
+module.exports = Services;

@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create Schema
-const CustomerSchema = new Schema({
+const UsersSchema = new Schema({
     name: {
-        type: Schema.Types.ObjectId,
-        ref: 'serviceprovider'
+        type: Schema.Types.ObjectId
     },
     handle: {
         type: String,
@@ -23,4 +22,4 @@ const CustomerSchema = new Schema({
 
 });
 
-module.exports = Customer = mongoose.model('customer', CustomerSchema);
+module.exports = Users = mongoose.model('users', UsersSchema);
