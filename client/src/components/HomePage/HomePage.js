@@ -40,7 +40,7 @@ class HomePage extends Component {
           <p>Search within our large list of credited and reliable businesses to find the right one for your property management needs.</p>
           <p>If you are a small business who wants to join 'Good Help', sign up now as a provider and grow your clientele (or business).</p>
           <div className="d-flex justify-content-center">
-            <a className="btn btn-lg" href="#" role="button">Get Started</a>
+            <a className="btn btn-lg" href="/" role="button">Get Started</a>
           </div>
 
         </div>
@@ -92,7 +92,7 @@ class HomePage extends Component {
             <Category handleServiceClick={this.handleServiceClick} category="Plumbing Services" img="./images/sink.png" alt="white toilet" />
           </div>
           <br />
-          <a href="#">Back to Top</a>
+          <a href="/">Back to Top</a>
 
         </div>
 

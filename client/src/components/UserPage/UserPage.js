@@ -68,9 +68,9 @@ class UserPage extends React.Component {
                                 <p className="lead text-center">Phone <span>Email</span>
                                 </p><p></p>
                                 <div>
-                                    <a href="#" className="btn btn-primary pull-right  btn-lg active" role="button" id="contactInfoModal" data-toggle="modal" data-target="#userInfoModal" >Update contact Info</a>
+                                    <a href="/user" className="btn btn-primary pull-right  btn-lg active" role="button" id="contactInfoModal" data-toggle="modal" data-target="#userInfoModal" >Update contact Info</a>
 
-                                    <a href="#" className="btn btn-primary pull-right  btn-lg active" role="button" id="Order Service">Order Service</a>
+                                    <a href="/user" className="btn btn-primary pull-right  btn-lg active" role="button" id="Order Service">Order Service</a>
                                 </div>
                             </div>
                         </div>
