@@ -31,6 +31,7 @@ class Closed extends Component {
                     </thead>
                     <tbody>
                         <tr>
+                            {/* these items need a model maybe? or something that can be used to connect to the sumbit button on the providers page that the users use to submit their requests. I put an idea for them below that arent the actually being used so make them whatever you need */}
                             {/* {props.invoiceNumber} */}
                             <th scope="row">1</th>
                             {/* {props.username} */}
@@ -38,13 +39,14 @@ class Closed extends Component {
                             {/* {props.task} */}
                             <td>Fix clogged shower drain</td>
                             <td>
+                                 {/* Drop-down (poneding and open) buttons need a remove and post request to remove the ask connect to it from this closed page and add it to the corresponding pending or open tables  */}
                        <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Closed
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" >Open</a>
-    <a class="dropdown-item">Pending</a>
+    <a class="dropdown-item" id="open">Open</a>
+    <a class="dropdown-item" id="pending">Pending</a>
   </div>
 </div>
 
