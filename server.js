@@ -1,21 +1,48 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const client = require('./routes/api/Client');
-const service = require('./routes/api/Service');
-const serviceprovider = require('./routes/api/ServiceProvider');
-const customer = require('./routes/api/Customer');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const path = require('path');
+
+const users = require('./routes/api/users');
+const profile = require('./routes/api/profile');
+const services = require('./routes/api/services');
 
 const app = express();
+const PORT = process.env.PORT || 5001;
+
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// app.use(MongoClient.mongoose( {useNewUrlParser: true}))
+
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport Config
+require('./config/passport')(passport);
+
+// Use Routes
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/services', services);
 
 // DB Config
-const db = require('./config/keys').mongoURI;
+// const db = require('./config/keys').mongoURI;
 
+// Server static assets if in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
 }
 
-
+// -----------------Database configuration with Mongoose---------------
+// -----------------Define local MongoDB URI---------------
+var databaseUri = 'mongodb://localhost/goodhelpApp';
 //------------------------------------------------
 if (process.env.MONGODB_URI) {
 //THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
@@ -26,26 +53,20 @@ if (process.env.MONGODB_URI) {
 }
 //-----------------End database configuration-------------------------
 
-// Define middleware here
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+var db = mongoose.connection;
 
-
-// Use Routes
-app.use('/api/client', client);
-app.use('/api/service', service);
-app.use('/api/serviceprovider', serviceprovider);
-app.use('/api/customer', customer);
 
 // show any mongoose errors
 db.on('error', function(err) {
   console.log('Mongoose Error: ', err);
 })
 
+
 //once logged in to the db through mongosse, log a success message
 db.once('open', function() {
   console.log('Mongoose connection sucessful.');
 })
+
 
 // Start the API server
 app.listen(PORT, function() {

@@ -7,6 +7,8 @@ class HomePage extends Component {
     providerSearchInput: ''
   }
 
+  //functions change of state and click function connected to the search button//
+
   handleProviderSearchChange = (event) => (
     this.setState(
       {
@@ -19,6 +21,8 @@ class HomePage extends Component {
     event.preventDefault();
     console.log(this.state.providerSearchInput)
   }
+
+  //function connected to the service category buttons//
 
   handleServiceClick = (event) => {
     event.preventDefault();
@@ -41,6 +45,7 @@ class HomePage extends Component {
           <p>If you are a small business who wants to join 'Good Help', sign up now as a provider and grow your clientele (or business).</p>
           <div className="d-flex justify-content-center">
             <button className="btn btn-lg">Get Started</button>
+
           </div>
 
         </div>
@@ -92,7 +97,7 @@ class HomePage extends Component {
             <Category handleServiceClick={this.handleServiceClick} category="Plumbing Services" img="./images/sink.png" alt="white toilet" />
           </div>
           <br />
-          <a href="#">Back to Top</a>
+          <a href="/">Back to Top</a>
 
         </div>
 

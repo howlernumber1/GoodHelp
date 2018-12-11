@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "goodhelp",
   "version": "1.0.0",
-  "description": "## Team Members:  Ashley Donald, Michael Toplisek, Tiffany Hall, Mark Johnson, Sareka Belnavis",
+  "description": "Network for small service providers",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -11,27 +11,23 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0"
-  },
+  "author": "GoodHelp Group",
+  "license": "MIT",
   "dependencies": {
-    "axios": "^0.16.2",
-    "express": "^4.16.4",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.3.14"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "gravatar": "^1.6.0",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.0.12",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^9.4.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/markj06/GoodHelp.git"
-  },
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/markj06/GoodHelp/issues"
-  },
-  "homepage": "https://github.com/markj06/GoodHelp#readme"
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "nodemon": "^1.17.3"
+  }
 }

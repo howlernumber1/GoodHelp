@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import  { faTimes }  from '@fortawesome/free-solid-svg-icons';
 ReactModal.setAppElement('#root');
 
 const AreaButton = (props) => (
@@ -131,6 +133,8 @@ class SignUp extends React.Component {
           contentLabel="Minimal Modal Example"
         >
           <form>
+            <button className="close-float btnLink" onClick={this.handleCloseModal}><FontAwesomeIcon icon={faTimes} size="1x" /></button>
+          <br></br>
             <label htmlFor="typeOfClient">What are you?</label>
             <select name="typeOfClient" onChange={this.handleChange} className="form-control" defaultValue="customer">
               <option value="customer">Customer</option>
