@@ -6,49 +6,51 @@ ReactModal.setAppElement('#root');
 
 
 class Login extends React.Component {
-  constructor () {
+  constructor() {
     super();
     this.state = {
       showModal: false,
-      loginEmail: '',
-      loginPassword: ''
+      loginEmail: "",
+      loginPassword: ""
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  handleOpenModal () {
+  handleOpenModal() {
     this.setState({ showModal: true });
   }
 
-  handleCloseModal () {
+  handleCloseModal() {
     this.setState({ showModal: false });
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
-    })
-  }
+    });
+  };
 
-  login = (event) => {
+  login = event => {
     event.preventDefault();
-     const loginUser = {
-       email: this.state.loginEmail,
-       password: this.state.loginPassword
-     }
-     console.log(loginUser)
-     this.handleCloseModal()
-  }
+    const loginUser = {
+      email: this.state.loginEmail,
+      password: this.state.loginPassword
+    };
+    console.log(loginUser);
+    this.handleCloseModal();
+  };
 
-  render () {
+  render() {
     return (
       <div>
-        <button className="btnLink" onClick={this.handleOpenModal}>Login</button>
+        <button className="btnLink" onClick={this.handleOpenModal}>
+          Login
+        </button>
         <ReactModal
-           isOpen={this.state.showModal}
-           contentLabel="Minimal Modal Example"
+          isOpen={this.state.showModal}
+          contentLabel="Minimal Modal Example"
         >
         <form>
           <button className="close-float btnLink" onClick={this.handleCloseModal}><FontAwesomeIcon icon={faTimes} size="1x" /></button>
@@ -70,6 +72,5 @@ class Login extends React.Component {
     );
   }
 }
-
 
 export default Login;
