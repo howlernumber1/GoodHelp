@@ -6,6 +6,7 @@ import ProviderProfile from "./components/ProviderProfile/ProviderProfile";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import ProviderPage from "./components/ProviderProfile/ProviderProfile";
+import Services from "./components/Services/Services";
 import NoMatch from "./components/NoMatch/NoMatch";
 import './App.css';
 
@@ -74,6 +75,7 @@ class App extends Component {
             <Route exact path='/' component={HomePage} />
             <Route exact path='/user' component={UserPage} />
             <Route exact path='/provider' component={ProviderProfile} />
+            <Route exact path='/services' component={Services}/>
             <Route component={NoMatch} />
           </Switch>
 

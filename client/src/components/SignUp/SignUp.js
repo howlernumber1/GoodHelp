@@ -299,9 +299,7 @@ class SignUp extends React.Component {
             )}
           </form>
 
-          <button className="btn btn-primary" onClick={this.signup}>
-            Register
-          </button>
+          <button className="btn btn-primary" onClick={this.signup.bind(this)}>Register</button>
         </ReactModal>
       </div>
     );
