@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Open from '../Requests/Open';
-import Closed from '../Requests/Closed';
+// import Open from '../Requests/Open';
+// import Closed from '../Requests/Closed';
 
 
 class Pending extends Component {

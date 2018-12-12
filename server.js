@@ -7,6 +7,7 @@ const path = require('path');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const services = require('./routes/api/services');
+const post = require('./routes/api/posts');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -26,6 +27,7 @@ require('./config/passport')(passport);
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/services', services);
+app.use('/api/post', post);
 
 // DB Config
 // const db = require('./config/keys').mongoURI;
@@ -55,6 +57,13 @@ if (process.env.MONGODB_URI) {
 
 var db = mongoose.connection;
 
+// mongoose
+//   // .MongoClient.connect(
+//   //   {useNewUrlParser: true}
+//   //   )
+//   .connect(db)
+//   .then(() => console.log('MongoDB Connected'))
+//   .catch(err => console.log(err));
 
 // show any mongoose errors
 db.on('error', function(err) {

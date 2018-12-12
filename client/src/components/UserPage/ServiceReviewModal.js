@@ -1,6 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
-import TableRow from "./TableRow";
+// import TableRow from "./TableRow";
 ReactModal.setAppElement("#root");
 
 // import { Link } from "react-router-dom";
