@@ -1,19 +1,20 @@
 import React from "react";
 import ReactModal from "react-modal";
 // import TableRow from "./TableRow";
+
 ReactModal.setAppElement("#root");
 
 // import { Link } from "react-router-dom";
 
-class ServiceReview extends React.Component {
+class ServiceOrder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false,
+      showModal: false
 
-      provider: this.props.data.provider,
-      service: this.props.data.service,
-      review: this.props.data.review
+      // provider: this.props.data.provider,
+      // service: this.props.data.service,
+      // review: this.props.data.review
     };
     console.log(this.props);
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -35,11 +36,11 @@ class ServiceReview extends React.Component {
     return (
       <div>
         <button className="btn btn-secondary" onClick={this.handleOpenModal}>
-          Add/Update Review
+          Order Service
         </button>
-        <ReactModal isOpen={this.state.showModal} contentLabel="Service Review">
+        <ReactModal isOpen={this.state.showModal} contentLabel="Service Order">
           <div class="header peach-gradient">
-            <h2 className="modal-title">SERVICE REVIEW</h2>
+            <h2 className="modal-title">SERVICE ORDER</h2>
             <br />
             <br />
             <form>
@@ -84,7 +85,7 @@ class ServiceReview extends React.Component {
                 </select>
               </div>
               <div class="form-group">
-                <label for="reviewDescription">Review</label>
+                <label for="reviewDescription">Description</label>
                 <textarea
                   type="text"
                   value={this.state.review}
@@ -127,4 +128,4 @@ class ServiceReview extends React.Component {
   }
 }
 
-export default ServiceReview;
+export default ServiceOrder;

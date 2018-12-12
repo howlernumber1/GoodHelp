@@ -1,9 +1,10 @@
 import React from "react";
 import TableRow from "./TableRow";
-// import { Link } from "react-router-dom";
-// import ServiceReview from "./ServiceReviewModal";
-import ProviderSummary from "../ProviderSummary/ProviderSummary";
 import UserProfile from "./UserProfile";
+
+// import { Link } from "react-router-dom";
+// import ServiceReview from "./ServiceReviewModal_mine";
+// import ProviderSummary from "../ProviderPage/ProviderSummary";
 
 //Created fake data to test dynamic row creation
 const fakeData = [
@@ -64,7 +65,7 @@ class UserPage extends React.Component {
         <div className="row">
           <div className="col-md-12">
             {/* <div className="card card-body bg-info text-white mb-3"> */}
-            <div className="card card-body bg-Light text-black mb-3">
+            <div className="card card-body text-black mb-3" id="userPageCard">
               <div className="row">
                 <div className="col-4 col-md-3 m-auto">
                   <img
@@ -81,24 +82,39 @@ class UserPage extends React.Component {
                 </p> */}
                 <br />
                 <p />
-                <div>
-                  <button className="btn btn-primary iconBtn mr-5">
+                <div className="row">
+                  <div className="col-4 col-md-3 m-auto">
+                    {/* <button className="btn btn-primary iconBtn mr-5"> */}
                     <UserProfile />
-                  </button>
+                    {/* </button> */}
+                  </div>
 
-                  <a
-                    href="#"
-                    className="btn btn-primary iconBtn mr-5"
-                    role="button"
-                    id="Order Service"
-                  >
-                    Order Service
-                  </a>
-
-                  {/* TEMPORARY BUTTON TO BE DELETED ONCE WE HAVE THE SEARCH FUNCTIONALITY WORKING ON THE HOME PAGE */}
-                  <button className="btn btn-primary iconBtn">
-                    <ProviderSummary />
-                  </button>
+                  <div>
+                    <a
+                      href="/ProviderPage"
+                      className="btn mr-5"
+                      role="button"
+                      id="Order Service"
+                    >
+                      Provider Page
+                    </a>
+                  </div>
+                  <div className="col-4 col-md-3 m-auto">
+                    <a
+                      href="/#searchServices"
+                      className="btn mr-5"
+                      role="button"
+                      id="Order Service"
+                    >
+                      Order Service
+                    </a>
+                  </div>
+                  <div className="col-4 col-md-3 m-auto">
+                    {/* TEMPORARY BUTTON TO BE DELETED ONCE WE HAVE THE SEARCH FUNCTIONALITY WORKING ON THE HOME PAGE */}
+                    {/* <button className="btn btn-primary"> */}
+                    {/* <ProviderSummary /> */}
+                    {/* </button> */}
+                  </div>
                 </div>
               </div>
             </div>
@@ -112,7 +128,7 @@ class UserPage extends React.Component {
         </div>
         <div className="row  col-md-12">
           <table className="table table-hover table-striped">
-            <thead className="thead bg-secondary text-align-center">
+            <thead className="thead text-align-center" id="userPageTable">
               <tr>
                 <th scope="col">Provider</th>
                 <th scope="col">Service Name</th>
