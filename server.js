@@ -49,7 +49,7 @@ app.use('/api/post', post);
 
 // -----------------Database configuration with Mongoose---------------
 // -----------------Define local MongoDB URI---------------
-var databaseUri = 'mongodb://localhost/goodhelpApp';
+var databaseUri = 'mongodb://localhost/goodhelp';
 // ------------------------------------------------
 if (process.env.MONGODB_URI) {
 //THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
