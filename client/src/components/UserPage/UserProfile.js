@@ -29,7 +29,7 @@ class UserProfile extends React.Component {
       <div>
         {/* <button className="btnLink" onClick={this.handleOpenModal}> */}
         <button
-          className="btn btn-primary iconBtn"
+          className="btn mr-5"
           onClick={this.handleOpenModal}
         >
           Update Profile
@@ -62,14 +62,14 @@ class UserProfile extends React.Component {
           {/* Need to add SAVE FUNCTIONALITY and update this.handleCloseModal */}
           <button
             type="submit"
-            className="btn btn-primary iconBtn mr-5"
+            className="btn"
             onClick={this.handleCloseModal}
           >
             Save
           </button>
           <button
             type="submit"
-            className="btn btn-primary iconBtn mr-5"
+            className="btn"
             onClick={this.handleCloseModal}
           >
             Cancel

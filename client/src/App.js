@@ -5,7 +5,7 @@ import UserPage from "./components/UserPage/UserPage";
 import ProviderProfile from "./components/ProviderProfile/ProviderProfile";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
-import ProviderPage from "./components/ProviderProfile/ProviderProfile";
+import ProviderPage from "./components/ProviderPage/ProviderPage";
 import NoMatch from "./components/NoMatch/NoMatch";
 import './App.css';
 
@@ -35,7 +35,7 @@ const Header = props => (
           {/* <Link to={'/search'}>Search</Link> | */}
             <Link className="links" to={'/services'}>Services</Link> |
             <Link className="links" to={'/user'}>Member</Link> |
-            <Link className="links" to={'/user'}>Provider</Link> <br />
+            <Link className="links" to={'/provider'}>Provider</Link> <br />
             <div className="d-flex justify-content-end float-right">
             <Login />|
             <SignUp />
@@ -69,7 +69,6 @@ class App extends Component {
           </header> */}
 
           <Route component={Header} />
-
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/user' component={UserPage} />
@@ -77,8 +76,11 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
 
+    
         </div>
       </BrowserRouter>
+
+      
     );
   }
 }

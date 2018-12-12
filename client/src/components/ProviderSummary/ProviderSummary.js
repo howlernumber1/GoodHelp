@@ -28,7 +28,7 @@ class ProviderSummary extends React.Component {
     return (
       <div>
         <button
-          className="btn btn-primary iconBtn"
+          className="btn mr-5"
           onClick={this.handleOpenModal}
         >
           Provider Summary

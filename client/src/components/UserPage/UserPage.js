@@ -69,36 +69,33 @@ class UserPage extends React.Component {
                 <div className="col-4 col-md-3 m-auto">
                   <img
                     className="rounded-circle"
-                    src="//www.gravatar.com/avatar/8cb7902f0a6c100e16cd43f97c0cf0f7?s=200&amp;rating=pg&amp;default=mm"
+                    src="./images/profilepic.jpg"
                     alt=""
                   />
                 </div>
               </div>
               <div className="text-center">
-                <h2 className="display-4 text-center">Customer Name</h2>
+                <h2 className="display-4 text-center">Luana Stecanella</h2>
                 {/* <p className="lead text-center">
                   Phone <span>Email</span>
                 </p> */}
                 <br />
                 <p />
                 <div>
-                  <button className="btn btn-primary iconBtn mr-5">
-                    <UserProfile />
-                  </button>
-
+                <span><UserProfile />
                   <a
                     href="#"
-                    className="btn btn-primary iconBtn mr-5"
+                    className="btn mr-5"
                     role="button"
                     id="Order Service"
-                  >
+                  > 
                     Order Service
-                  </a>
+                  </a> </span>
 
                   {/* TEMPORARY BUTTON TO BE DELETED ONCE WE HAVE THE SEARCH FUNCTIONALITY WORKING ON THE HOME PAGE */}
-                  <button className="btn btn-primary iconBtn">
+                  
                     <ProviderSummary />
-                  </button>
+                
                 </div>
               </div>
             </div>
