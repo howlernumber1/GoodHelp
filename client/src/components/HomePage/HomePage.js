@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Category from '../Categories/Category';
+import * as $ from 'axios'
 
 class HomePage extends Component {
 
   state = {
-    providerSearchInput: ''
+    providerSearchInput: '',
+    services: []
   }
 
   //functions change of state and click function connected to the search button//
@@ -27,6 +29,13 @@ class HomePage extends Component {
   handleServiceClick = (event) => {
     event.preventDefault();
     console.log(event.target.value)
+    $.get('api/services')
+    .then((result) => {
+      this.setState({
+        services: result.data
+      })
+    })
+
   }
 
   render() {
