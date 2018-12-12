@@ -5,12 +5,8 @@ import UserPage from "./components/UserPage/UserPage";
 import ProviderProfile from "./components/ProviderProfile/ProviderProfile";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
-<<<<<<< HEAD
-import ProviderPage from "./components/ProviderPage/ProviderPage";
-=======
 import ProviderPage from "./components/ProviderProfile/ProviderProfile";
 import Services from "./components/Services/Services";
->>>>>>> 2a3145e2dcae8e0cd785c7b78e8796c2bb750c56
 import NoMatch from "./components/NoMatch/NoMatch";
 import './App.css';
 

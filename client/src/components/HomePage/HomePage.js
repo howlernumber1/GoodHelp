@@ -4,30 +4,30 @@ import Category from '../Categories/Category';
 class HomePage extends Component {
 
   state = {
-    providerSearchInput: ''
+    providerSearchInput: '',
   }
 
   //functions change of state and click function connected to the search button//
 
-  handleProviderSearchChange = (event) => (
+  handleProviderSearchChange = (event) => {
     this.setState(
       {
         providerSearchInput: event.target.value
-      }
-    )
-  )
+      })
+    }
 
   handleProviderSearchClick = (event) => {
     event.preventDefault();
-    console.log(this.state.providerSearchInput)
+    
   }
 
   //function connected to the service category buttons//
 
   handleServiceClick = (event) => {
     event.preventDefault();
-    console.log(event.target.value)
   }
+
+
 
   render() {
 
@@ -52,7 +52,6 @@ class HomePage extends Component {
 
 
         {/* search section */}
-
         <div className="container">
           <div className="row d-flex justify-content-center">
             <div className="searchSection">
@@ -71,8 +70,8 @@ class HomePage extends Component {
         {/* This is where the results from the search button are appended */}
 
           <div className="SearchResults">
-
-                      {/* <Results business_name="" services_provided="" areas_serviced="" ratings="" /> */}
+        
+         
 
             </div>
 

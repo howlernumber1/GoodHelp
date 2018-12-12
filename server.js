@@ -8,6 +8,7 @@ const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const services = require('./routes/api/services');
 const post = require('./routes/api/posts');
+const providers = require('./routes/api/ServiceProvider')
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -28,6 +29,7 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/services', services);
 app.use('/api/post', post);
+app.use('/api/ServiceProvider', providers);
 
 // DB Config
 // const db = require('./config/keys').mongoURI;

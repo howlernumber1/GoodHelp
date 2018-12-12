@@ -29,7 +29,7 @@ class UserProfile extends React.Component {
       <div>
         {/* <button className="btnLink" onClick={this.handleOpenModal}> */}
         <button
-          className="btn mr-5"
+          className="btn mr-5 update"
           onClick={this.handleOpenModal}
         >
           Update Profile
