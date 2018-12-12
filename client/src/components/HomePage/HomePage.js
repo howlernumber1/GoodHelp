@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import Category from '../Categories/Category';
+import * as $ from 'axios'
+
+const Services = (props) => (
+  <p id={props.key}>{props.service}</p>
+)
+
+const Provider = (props) => (
+    <h1>{props.providerName}</h1>
+)
 
 class HomePage extends Component {
 
   state = {
-    providerSearchInput: ''
+    providerSearchInput: '',
+    services: [],
+    providers: []
   }
 
   //functions change of state and click function connected to the search button//
@@ -20,6 +31,14 @@ class HomePage extends Component {
   handleProviderSearchClick = (event) => {
     event.preventDefault();
     console.log(this.state.providerSearchInput)
+    const searchTerm = this.state.providerSearchInput
+
+    $.get(`/api/serviceprovider/search/${searchTerm}`)
+    .then((result) => {
+      this.setState({
+        providers: result.data
+      })
+    })
   }
 
   //function connected to the service category buttons//
@@ -27,6 +46,15 @@ class HomePage extends Component {
   handleServiceClick = (event) => {
     event.preventDefault();
     console.log(event.target.value)
+    const category = event.target.value
+
+    $.get(`/api/serviceprovider/${category}`)
+    .then((result) => {
+      this.setState({
+        providers: result.data
+      })
+    })
+
   }
 
   render() {
@@ -97,6 +125,28 @@ class HomePage extends Component {
             <Category handleServiceClick={this.handleServiceClick} category="Plumbing Services" img="./images/sink.png" alt="white toilet" />
           </div>
           <br />
+          <div>
+
+          </div>
+
+          <div>
+            {this.state.providers.length <= 1 ? (
+            this.state.providers.map((provider, _id) => (
+              <div key={provider._id} className="card">
+              <div className="card-body">
+              <Provider providerName={provider.business_name}/>
+              {provider.services_provided.map((service, i) => (
+                <Services key={i} service={service} />
+              ))}
+              </div>
+            </div>
+            ))
+            ): (
+              <div></div>
+            )
+            }
+          </div>
+
           <a href="/">Back to Top</a>
 
         </div>
