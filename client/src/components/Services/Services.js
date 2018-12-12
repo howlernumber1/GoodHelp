@@ -9,25 +9,17 @@ const service = (props) => (
   </div>
 )
 
-
-
     class Services extends React.Component {
-
-        state = {
-          services: []
+        constructor(){
+            super();
+            this.state = {
+                services: []
+            }
         }
 
-        getServices = () => {
-          $.get('api/services')
-            .then((result) => {
-              this.setState({ services: result.data });
-            });
+        componentDidMount(){
+            $.get('http://localhost:3000/api/services').then(services => this.setState({services:services.data}))
         }
-
-        componentDidMount() {
-          this.getServices();
-        }
-
 
         render() {
             return (
@@ -60,13 +52,7 @@ const service = (props) => (
 
                 </div>
 
-
-
-
-
                 )}
-
-
             }
 
 export default Services;
