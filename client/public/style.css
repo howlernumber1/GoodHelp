@@ -217,6 +217,18 @@ margin-right: 40px;
 
 }
 
+ .ReactModal__Content--after-open {
+    max-width: 800px;
+    align-content: center;
+    margin-left: 500px;
+    max-height: 800px;
+}
 
+.modal-title {
+text-align: center;
+}
 
+.accountUpdate {
 
+    margin-left: 250px;
+}

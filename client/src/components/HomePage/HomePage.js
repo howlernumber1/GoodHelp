@@ -14,11 +14,8 @@ class HomePage extends Component {
 
   state = {
     providerSearchInput: '',
-<<<<<<< HEAD
-=======
     services: [],
     providers: []
->>>>>>> c2f5817e16d300b13c4e22db73fb42010bf94ab9
   }
 
   //functions change of state and click function connected to the search button//
@@ -32,9 +29,6 @@ class HomePage extends Component {
 
   handleProviderSearchClick = (event) => {
     event.preventDefault();
-<<<<<<< HEAD
-    
-=======
     console.log(this.state.providerSearchInput)
     const searchTerm = this.state.providerSearchInput
 
@@ -44,15 +38,12 @@ class HomePage extends Component {
         providers: result.data
       })
     })
->>>>>>> c2f5817e16d300b13c4e22db73fb42010bf94ab9
   }
 
   //function connected to the service category buttons//
 
   handleServiceClick = (event) => {
     event.preventDefault();
-<<<<<<< HEAD
-=======
     console.log(event.target.value)
     const category = event.target.value
 
@@ -63,7 +54,6 @@ class HomePage extends Component {
       })
     })
 
->>>>>>> c2f5817e16d300b13c4e22db73fb42010bf94ab9
   }
 
 
