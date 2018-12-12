@@ -18,7 +18,7 @@ const service = (props) => (
         }
 
         getServices = () => {
-          $.get('api/services')
+          $.get('/services')
             .then((result) => {
               this.setState({ services: result.data });
             });

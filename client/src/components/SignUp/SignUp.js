@@ -1,5 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
+import $ from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 ReactModal.setAppElement("#root");
@@ -39,10 +40,11 @@ class SignUp extends React.Component {
       newArrayItem: "",
       showModal: false,
       signUpEmail: "",
-      signUpUsername: "",
+      signUpPhone: "",
+      signUpClientname: "",
       signUpPassword: "",
-      signUpConfirm: "",
-      typeOfClient: "customer",
+      // signUpConfirm: "",
+      typeOfClient: "client",
       businessName: "",
       servicesProvided: [],
       areasServiced: [],
@@ -106,14 +108,29 @@ class SignUp extends React.Component {
 
   signup = event => {
     event.preventDefault();
-    if (this.state.typeOfClient === "customer") {
+    if (this.state.typeOfClient === "client") {
       const newUser = {
+        phone: this.state.signUpPhone,
         email: this.state.signUpEmail,
-        username: this.state.signUpUsername,
-        password: this.state.signUpPassword,
-        confirm: this.state.signUpConfirm
+        clientname: this.state.signUpClientname,
+        password: this.state.signUpPassword
       };
       console.log(newUser);
+      $.post('clients/register', newUser)
+      .then(res => {
+        console.log(res)
+        if(res.data) {
+          console.log('successful signup')
+          this.setState({redirectTo: '/'
+          })
+        } else {
+          console.log('signup error');
+        }
+      })
+      .catch(error => {
+        console.log('Sign up server error:');
+        console.log(error);
+      })
     } else {
       const newProvider = {
         business_name: this.state.businessName,
@@ -125,7 +142,31 @@ class SignUp extends React.Component {
         email: this.state.businessEmail
       };
       console.log(newProvider);
+      $.post('clients/register', newProvider)
+      .then(res => {
+        console.log(res)
+        if(res.data) {
+          console.log('successful signup')
+          this.setState({redirectTo: '/'
+          })
+        } else {
+          console.log('signup error');
+        }
+      })
+      .catch(error => {
+        console.log('Sign up server error:');
+        console.log(error);
+      })
     }
+
+    // $.post('/register', {
+    //   if (this.state.typeOfClient === "client") {
+    //
+    //   }
+    // })
+    // .then({
+    //
+    // })
     this.handleCloseModal();
   };
 
@@ -152,12 +193,12 @@ class SignUp extends React.Component {
               name="typeOfClient"
               onChange={this.handleChange}
               className="form-control"
-              defaultValue="customer"
+              defaultValue="client"
             >
-              <option value="customer">Customer</option>
+              <option value="client">Client</option>
               <option value="provider">Provider</option>
             </select>
-            {this.state.typeOfClient === "customer" ? (
+            {this.state.typeOfClient === "client" ? (
               <div>
                 <div className="form-group">
                   <label htmlFor="InputEmail">Email address:</label>
@@ -178,11 +219,22 @@ class SignUp extends React.Component {
                   <label htmlFor="InputUsername">Username:</label>
                   <input
                     type="text"
-                    name="signUpUsername"
+                    name="signUpClientname"
                     onChange={this.handleChange}
                     className="form-control"
                     id="InputUsername"
                     placeholder="Username"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="InputUsername">Phone:</label>
+                  <input
+                    type="text"
+                    name="signUpPhone"
+                    onChange={this.handleChange}
+                    className="form-control"
+                    id="InputPhone"
+                    placeholder="Phone"
                   />
                 </div>
                 <div className="form-group">
@@ -193,17 +245,6 @@ class SignUp extends React.Component {
                     onChange={this.handleChange}
                     className="form-control"
                     id="InputPassword"
-                    placeholder="Password"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="PasswordConf">Confirm Password:</label>
-                  <input
-                    type="password"
-                    name="signUpConfirm"
-                    onChange={this.handleChange}
-                    className="form-control"
-                    id="PasswordConf"
                     placeholder="Password"
                   />
                 </div>
