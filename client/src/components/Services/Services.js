@@ -1,4 +1,3 @@
-
 import React from 'react';
 import $ from 'axios';
 
@@ -6,20 +5,28 @@ const service = (props) => (
   <div>
     <p>{props.category}</p>
     <p>{props.description}</p>
-  </div>
+    </div>
 )
 
+
+
     class Services extends React.Component {
-        constructor(){
-            super();
-            this.state = {
-                services: []
-            }
+
+        state = {
+          services: []
         }
 
-        componentDidMount(){
-            $.get('http://localhost:3000/api/services').then(services => this.setState({services:services.data}))
+        getServices = () => {
+          $.get('api/services')
+            .then((result) => {
+              this.setState({ services: result.data });
+            });
         }
+
+        componentDidMount() {
+          this.getServices();
+        }
+
 
         render() {
             return (
@@ -42,7 +49,7 @@ const service = (props) => (
                             </div>
                             {this.state.services.map(service => (
                               <service>
-                                {service.category}
+                                {service.category} ----------------------------
                                 {service.description}
                               </service>
                             ))}
@@ -52,7 +59,13 @@ const service = (props) => (
 
                 </div>
 
+
+
+
+
                 )}
+
+
             }
 
 export default Services;
