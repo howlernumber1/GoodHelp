@@ -8,8 +8,6 @@ const service = (props) => (
     </div>
 )
 
-
-
     class Services extends React.Component {
 
         state = {
@@ -59,13 +57,7 @@ const service = (props) => (
 
                 </div>
 
-
-
-
-
                 )}
-
-
             }
 
 export default Services;
