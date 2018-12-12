@@ -8,11 +8,7 @@ const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const services = require('./routes/api/services');
 const post = require('./routes/api/posts');
-<<<<<<< HEAD
 const providers = require('./routes/api/ServiceProvider')
-=======
-const providers = require('./routes/api/ServiceProvider.js');
->>>>>>> c2f5817e16d300b13c4e22db73fb42010bf94ab9
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -33,11 +29,7 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/services', services);
 app.use('/api/post', post);
-<<<<<<< HEAD
-app.use('/api/ServiceProvider', providers);
-=======
 app.use('/api/serviceprovider', providers);
->>>>>>> c2f5817e16d300b13c4e22db73fb42010bf94ab9
 
 // DB Config
 // const db = require('./config/keys').mongoURI;
