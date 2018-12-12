@@ -20,13 +20,12 @@ class HomePage extends Component {
 
   //functions change of state and click function connected to the search button//
 
-  handleProviderSearchChange = (event) => (
+  handleProviderSearchChange = (event) => {
     this.setState(
       {
         providerSearchInput: event.target.value
-      }
-    )
-  )
+      })
+    }
 
   handleProviderSearchClick = (event) => {
     event.preventDefault();
@@ -57,6 +56,8 @@ class HomePage extends Component {
 
   }
 
+
+
   render() {
 
     return (
@@ -72,7 +73,7 @@ class HomePage extends Component {
           <p>Search within our large list of credited and reliable businesses to find the right one for your property management needs.</p>
           <p>If you are a small business who wants to join 'Good Help', sign up now as a provider and grow your clientele (or business).</p>
           <div className="d-flex justify-content-center">
-            <button className="btn btn-lg">Get Started</button>
+            <button className="btn btn-lg"> Get Started</button>
 
           </div>
 
@@ -80,7 +81,6 @@ class HomePage extends Component {
 
 
         {/* search section */}
-
         <div className="container">
           <div className="row d-flex justify-content-center">
             <div className="searchSection">
@@ -95,6 +95,14 @@ class HomePage extends Component {
           <br />
           <div className="row results d-flex justify-content-center">
           </div>
+        
+        {/* This is where the results from the search button are appended */}
+
+          <div className="SearchResults">
+        
+         
+
+            </div>
 
         </div>
 

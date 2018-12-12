@@ -32,9 +32,9 @@ class Pending extends Component {
                             {/* {props.invoiceNumber} */}
                             <th scope="row">1</th>
                             {/* {props.username} */}
-                            <td>Mark</td>
+                            <td>Chris P.</td>
                             {/* {props.task} */}
-                            <td>Fix clogged shower drain</td>
+                            <td>New coat of paint and wax</td>
                             <td>
 
                                 {/* Drop-down (open and closed) buttons need a remove and post request to remove the ask connect to it from this pending page and add it to the corresponding closed or open tables  */}

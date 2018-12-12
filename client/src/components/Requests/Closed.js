@@ -35,9 +35,9 @@ class Closed extends Component {
                             {/* {props.invoiceNumber} */}
                             <th scope="row">1</th>
                             {/* {props.username} */}
-                            <td>Michael</td>
+                            <td> Marg E.</td>
                             {/* {props.task} */}
-                            <td>Fix clogged shower drain</td>
+                            <td>Tint windows</td>
                             <td>
                                  {/* Drop-down (poneding and open) buttons need a remove and post request to remove the ask connect to it from this closed page and add it to the corresponding pending or open tables  */}
                        <div class="dropdown">
