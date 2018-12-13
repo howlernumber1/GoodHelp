@@ -6,15 +6,30 @@ import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 
 class ProviderPage extends React.Component {
   state = {
-    providerName: "Google Inc.",
-    img: "./images/google.jpg",
-    alt: "google office with their colored logo and a bike out front",
+    providerName: "Atlanta Metro Detail",
+    img: "./images/car.jpg",
+    alt: "red ferrari parked in front of chateau elan",
     Phone: "123-456-7891",
     Email: "Company@gmail.com",
     url: "Company@comp.com",
+    ServiceCategory: "",
     ServiceDescription: "",
-    Reviews: [""],
-    ServiceCategory: ["Car Repair", "Lawn", "Delivery", "Mechanic", "pluming"],
+    Reviews: "",
+    subCategories: [
+      ["Tire Change", "Oil Change", "Tire Rotation"],
+      [
+        "Regular Hand Wash",
+        "Premium Hand Wash",
+        "Interior Detail",
+        "Exterior Detail"
+      ],
+      ["diagnose car problem", "Fix Car"]
+    ],
+    ServiceCategory: [
+      { name: "Car Repair", id: 0 },
+      { name: "Car Wash", id: 1 },
+      { name: "Mechanic", id: 2 }
+    ],
     serviceSelected: null
   };
 
@@ -41,26 +56,39 @@ class ProviderPage extends React.Component {
             />
           </div>
           <br />
+          <br />
           <div className="row">
-            <h1 className="providerName">{this.state.providerName}</h1>
+            <h1 className="providerName" id="providerpagetext">
+              {this.state.providerName}
+            </h1>
           </div>
           <br />
           <div className="row">
             <p
-              className="form-control-static "
-              align="center"
+              className="form-control-static .d-inline"
               id="providerPhone"
+              id="providerpagetext"
             >
               {this.state.Phone}
             </p>
           </div>
-          <div className="row">
-            <p className="form-control-static .d-inline" id="providerEmail">
-              {this.state.Email}
-            </p>
+          <div className="center">
+            <div className="row">
+              <p
+                className="form-control-static .d-inline"
+                id="providerEmail"
+                id="providerpagetext"
+              >
+                {this.state.Email}
+              </p>
+            </div>
           </div>
           <div className="row">
-            <p className="form-control-static .d-inline" id="providerUrl">
+            <p
+              className="form-control-static .d-inline"
+              id="providerUrl"
+              id="providerpagetext"
+            >
               {this.state.url}
             </p>
           </div>
@@ -76,15 +104,55 @@ class ProviderPage extends React.Component {
         <form>
           <div className="form-group">
             <label for="exampleFormControlSelect1">Services Provided</label>
-            <p className="form-control-static .d-inline" id="providerServices">
-              {this.state.ServiceCategory}
-            </p>
+            <select
+              onChange={this.handleSelect}
+              className="form-control"
+              id="exampleFormControlSelect1"
+            >
+              {this.state.ServiceCategory.map(service => {
+                return <option value={service.id}>{service.name}</option>;
+              })}
+            </select>
           </div>
-
+          <div className="form-group">
+            <label htmlFor="reviewRating">Service Description</label>
+            <select
+              onChang={this.handleSub}
+              className="form-control"
+              id="subCatSelect"
+            >
+              {this.state.serviceSelected
+                ? this.state.subCategories[this.state.serviceSelected].map(
+                    ele => {
+                      return <option value={ele}>{ele}</option>;
+                    }
+                  )
+                : ""}
+            </select>
+          </div>
           <div className="form-group">
             <label htmlFor="reviewDescription">Reviews</label>
-
-            {/* <tbody className="table-body bg-light tbodypage">
+            <textarea class="form-control" rows="5">
+              "They did a great job! I have 3 kids 2 dogs and a cat and we
+              travel constantly. Needless to say, the inside of my car was a
+              mess! Metro Atlanta Detailing cleaned it all up! They vacummed,
+              removed stains, shampooed my seats, etc. Now my car looks
+              immaculant! And they did an excellent job on the window tinting as
+              well...it looks seamless."
+            </textarea>
+          </div>
+          <div className="form-group">
+            <textarea class="form-control" rows="5">
+              "My backyard looks amazing! They installed a large fountain and a
+              waterfall over my pool. They even added a firepit. My hedges are
+              trimmed nicely, the lawn is mowed and the flower beds are among
+              the most beautiful that I've ever seen. I gave them a few loose
+              instructions on what I wanted and gave them creative leeway on the
+              rest. What they came up with surpassed my expectations! I'll
+              definitely be recommending them to my friends and family."
+            </textarea>
+          </div>
+          {/* <tbody className="table-body bg-light tbodypage">
                 {fakeData.map(item => {
                   return (
                     <TableRow
@@ -95,7 +163,7 @@ class ProviderPage extends React.Component {
                   );
                 })}
               </tbody> */}
-          </div>
+          {/* </div> */}
           {/* <button type="submit" className="btn btn-primary">Submit</button>*/}
         </form>
       </div>

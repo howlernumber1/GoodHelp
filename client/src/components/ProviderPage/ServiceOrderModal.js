@@ -10,7 +10,27 @@ class ServiceOrder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false
+      showModal: false,
+      providerName: "Google Inc.",
+      phone: "123-456-7891",
+      email: "Company@gmail.com",
+      url: "Company@comp.com",
+      serviceCategory: [
+        { name: "Car Repair", id: 0 },
+        { name: "Lawn", id: 1 },
+        { name: "Delivery", id: 2 },
+        { name: "Mechanic", id: 3 },
+        { name: "pluming", id: 4 }
+      ]
+      // subCategories: [
+      //   ["tire change", "oil change", "car wash"],
+      //   ["lawn care", "trim trees", "trim edges"],
+      //   ["Pick-up", "Delivery Truck Rental"],
+      //   ["diagnose car problem", "Fix Car"],
+      //   ["Fix Toilet", "Kitchen Sink", "Install Pipes"]
+      // ],
+
+      // serviceSelected: null
     };
 
     console.log(this.props);
@@ -18,43 +38,50 @@ class ServiceOrder extends React.Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  state = {
-    providerName: "Google Inc.",
-    img: "./images/google.jpg",
-    alt: "google office with their colored logo and a bike out front",
-    Phone: "123-456-7891",
-    Email: "Company@gmail.com",
-    url: "Company@comp.com",
-    ServiceCategory: "",
-    ServiceDescription: "",
-    Reviews: "",
-    subCategories: [
-      ["tire change", "oil change", "car wash"],
-      ["lawn care", "trim trees", "trim edges"],
-      ["Pick-up", "Delivery Truck Rental"],
-      ["diagnose car problem", "Fix Car"],
-      ["Fix Toilet", "Kitchen Sink", "Install Pipes"]
-    ],
-    ServiceCategory: [
-      { name: "Car Repair", id: 0 },
-      { name: "Lawn", id: 1 },
-      { name: "Delivery", id: 2 },
-      { name: "Mechanic", id: 3 },
-      { name: "pluming", id: 4 }
-    ],
-    serviceSelected: null
-  };
+  // state = {
+  //   providerName: "Google Inc.",
+  //   phone: "123-456-7891",
+  //   email: "Company@gmail.com",
+  //   url: "Company@comp.com",
+  //   serviceCategory: [
+  //     { name: "Car Repair", id: 0 },
+  //     { name: "Lawn", id: 1 },
+  //     { name: "Delivery", id: 2 },
+  //     { name: "Mechanic", id: 3 },
+  //     { name: "pluming", id: 4 }
+  //   ],
+  //   subCategories: [
+  //     ["tire change", "oil change", "car wash"],
+  //     ["lawn care", "trim trees", "trim edges"],
+  //     ["Pick-up", "Delivery Truck Rental"],
+  //     ["diagnose car problem", "Fix Car"],
+  //     ["Fix Toilet", "Kitchen Sink", "Install Pipes"]
+  //   ],
+
+  //   serviceSelected: null
+  // };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
   handleOpenModal() {
-    this.setState({ showModal: true });
+    this.setState({ showModal: false });
   }
 
   handleCloseModal() {
     this.setState({ showModal: false });
   }
+
+  handleSelect = event => {
+    this.setState({
+      serviceSelected: event.target.value
+    });
+  };
+  handleSub = event => {
+    this.setState({
+      subCategorieSelect: event.target.value
+    });
+  };
 
   render() {
     return (
@@ -63,17 +90,17 @@ class ServiceOrder extends React.Component {
           Order Service
         </button>
         <ReactModal isOpen={this.state.showModal} contentLabel="Service Order">
-          <div class="header peach-gradient">
+          <div className="header">
             <h2 className="modal-title">SERVICE ORDER</h2>
             <br />
             <br />
             <form>
-              <div class="form-group">
-                <label for="providerName">Provider Name</label>
+              <div className="form-group">
+                {/* <label for="providerName">Provider Name</label> */}
                 <h3 className="providerName">{this.state.providerName}</h3>
+                <input type="text" value={this.state.providerName} />
               </div>
               <br />
-              {/* <button type="submit" class="btn btn-primary">Submit</button>*/}
 
               {/* //FORM */}
 
@@ -88,6 +115,10 @@ class ServiceOrder extends React.Component {
                 >
                   {/* {this.state.ServiceCategory.map(service => {
                     return <option value={service.id}>{service.name}</option>;
+                  })} */}
+
+                  {/* {this.state.ServiceCategory.map(service => {
+                    return <option value={service.name} />;
                   })} */}
                 </select>
               </div>
@@ -111,7 +142,7 @@ class ServiceOrder extends React.Component {
 
             {/* Need to add SAVE FUNCTIONALITY and update this.handleCloseModal */}
             <button
-              class="btn btn-primary iconBtn mr-5"
+              className="btn btn-primary iconBtn mr-5"
               onClick={() =>
                 this.props.updateData(this.props.data.id, this.state)
               }
@@ -119,7 +150,7 @@ class ServiceOrder extends React.Component {
               Save
             </button>
             <button
-              class="btn btn-primary iconBtn mr-5"
+              className="btn btn-primary iconBtn mr-5"
               onClick={this.handleCloseModal}
             >
               Cancel

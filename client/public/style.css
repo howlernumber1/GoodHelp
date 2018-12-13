@@ -213,3 +213,8 @@ h1.providerName {
 .accountUpdate {
   margin-left: 250px;
 }
+
+#providerpagetext {
+  text-align: center;
+  /* margin-left: 300px; */
+}
