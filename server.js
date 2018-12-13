@@ -7,8 +7,7 @@ const path = require('path');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const services = require('./routes/api/services');
-const post = require('./routes/api/posts');
-const providers = require('./routes/api/ServiceProvider')
+const post = require('./routes/api/post');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -16,7 +15,6 @@ const PORT = process.env.PORT || 5001;
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use(MongoClient.mongoose( {useNewUrlParser: true}))
 
 // Passport middleware
 app.use(passport.initialize());
@@ -29,7 +27,6 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/services', services);
 app.use('/api/post', post);
-app.use('/api/serviceprovider', providers);
 
 // DB Config
 // const db = require('./config/keys').mongoURI;
@@ -47,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
 // -----------------Database configuration with Mongoose---------------
 // -----------------Define local MongoDB URI---------------
 var databaseUri = 'mongodb://localhost/goodhelp';
-//------------------------------------------------
+// ------------------------------------------------
 if (process.env.MONGODB_URI) {
 //THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
   mongoose.connect(process.env.MONGODB_URI);
@@ -58,14 +55,6 @@ if (process.env.MONGODB_URI) {
 //-----------------End database configuration-------------------------
 
 var db = mongoose.connection;
-
-// mongoose
-//   // .MongoClient.connect(
-//   //   {useNewUrlParser: true}
-//   //   )
-//   .connect(db)
-//   .then(() => console.log('MongoDB Connected'))
-//   .catch(err => console.log(err));
 
 // show any mongoose errors
 db.on('error', function(err) {
