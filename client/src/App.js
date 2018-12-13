@@ -13,76 +13,31 @@ import "./App.css";
 
 const Header = props => (
   <header>
-<<<<<<< HEAD
-    {props.location.pathname === "/user" ? (
-      <nav className="navbar">
-        <p className="navbar-brand"> GoodHelp</p>
-        <span>
-          <Link className="links" to={"/"}>
-            Home
-          </Link>{" "}
-          |{/* <Link to={'/search'}>Search</Link> | */}
-          <Link className="links" to={"/services"}>
-            The
-          </Link>{" "}
-          |
-          <Link className="links" to={"/user"}>
-            New
-          </Link>{" "}
-          |
-          <Link className="links" to={"/user"}>
-            One
-          </Link>{" "}
-          <br />
-          <div className="d-flex justify-content-end float-right">
-            <Login />|
-            <SignUp />
-          </div>
-        </span>
-      </nav>
-    ) : (
-      <nav className="navbar">
-        <p className="navbar-brand"> GoodHelp</p>
-        <span>
-          <Link className="links" to={"/"}>
-            Home
-          </Link>{" "}
-          |{/* <Link to={'/search'}>Search</Link> | */}
-          <Link className="links" to={"/services"}>
-            Services
-          </Link>{" "}
-          |
-          <Link className="links" to={"/user"}>
-            Member
-          </Link>{" "}
-          |
-          <Link className="links" to={"/provider"}>
-            Provider
-          </Link>{" "}
-          <br />
-          <div className="d-flex justify-content-end float-right">
-            <Login />|
-            <SignUp />
-          </div>
-        </span>
-      </nav>
-    )}
-=======
-        <nav className="navbar">
-          <p className="navbar-brand"> GoodHelp</p>
-          <span>
-            <Link className="links" to={'/'}>Home</Link>  |
-          {/* <Link to={'/search'}>Search</Link> | */}
-            <Link className="links" to={'/services'}>Services</Link> |
-            <Link className="links" to={'/user'}>Member</Link> |
-            <Link className="links" to={'/provider'}>Provider</Link> <br />
-            <div className="d-flex justify-content-end float-right">
-            <Login />|
-            <SignUp />
-            </div>
-          </span>
-        </nav>
->>>>>>> c568e058c453caf1bc774790025f4757901b2fa7
+    <nav className="navbar">
+      <p className="navbar-brand"> GoodHelp</p>
+      <span>
+        <Link className="links" to={"/"}>
+          Home
+        </Link>{" "}
+        |{/* <Link to={'/search'}>Search</Link> | */}
+        <Link className="links" to={"/services"}>
+          Services
+        </Link>{" "}
+        |
+        <Link className="links" to={"/user"}>
+          Member
+        </Link>{" "}
+        |
+        <Link className="links" to={"/provider"}>
+          Provider
+        </Link>{" "}
+        <br />
+        <div className="d-flex justify-content-end float-right">
+          <Login />|
+          <SignUp />
+        </div>
+      </span>
+    </nav>
   </header>
 );
 
@@ -107,18 +62,11 @@ class App extends Component {
 
           <Route component={Header} />
           <Switch>
-<<<<<<< HEAD
             <Route exact path="/" component={HomePage} />
             <Route exact path="/user" component={UserPage} />
-            <Route exact path="/provider" component={ProviderPage} />
-            <Route exact path="/services" component={ProviderPage} />
-=======
-            <Route exact path='/' component={HomePage} />
-            <Route exact path='/user' component={UserPage} />
-            <Route exact path='/provider' component={ProviderProfile} />
-            <Route exact path='/services' component={Services}/>
-            <Route exact path='/requests' component={Requests}/>
->>>>>>> c568e058c453caf1bc774790025f4757901b2fa7
+            <Route exact path="/provider" component={ProviderProfile} />
+            <Route exact path="/services" component={Services} />
+            <Route exact path="/requests" component={Requests} />
             <Route component={NoMatch} />
           </Switch>
         </div>

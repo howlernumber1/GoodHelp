@@ -72,18 +72,6 @@ class ProviderPage extends React.Component {
               {this.state.Phone}
             </p>
           </div>
-<<<<<<< HEAD
-          <div className="center">
-            <div className="row">
-              <p
-                className="form-control-static .d-inline"
-                id="providerEmail"
-                id="providerpagetext"
-              >
-                {this.state.Email}
-              </p>
-            </div>
-=======
           <div className="row">
             <p
               className="form-control-static .d-inline"
@@ -92,7 +80,6 @@ class ProviderPage extends React.Component {
             >
               {this.state.Email}
             </p>
->>>>>>> c568e058c453caf1bc774790025f4757901b2fa7
           </div>
           <div className="row">
             <p
@@ -182,8 +169,4 @@ class ProviderPage extends React.Component {
   }
 }
 
-<<<<<<< HEAD
 export default ProviderPage;
-=======
-export default ProviderPage;
->>>>>>> c568e058c453caf1bc774790025f4757901b2fa7

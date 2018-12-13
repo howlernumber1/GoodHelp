@@ -162,8 +162,4 @@ class ServiceOrder extends React.Component {
   }
 }
 
-<<<<<<< HEAD
 export default ServiceOrder;
-=======
-export default ServiceOrder;
->>>>>>> c568e058c453caf1bc774790025f4757901b2fa7
