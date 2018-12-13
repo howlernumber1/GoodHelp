@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 // Create Schema
 const ServiceProviderSchema = new Schema({
     business_name: {
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: 'services'
     },
+    category: String,
     handle: {
         type: String,
-        required: true,
         max: 40
     },
     services_provided: {

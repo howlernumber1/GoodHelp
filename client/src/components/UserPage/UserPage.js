@@ -10,38 +10,30 @@ import UserProfile from "./UserProfile";
 const fakeData = [
   {
     id: 0,
-    provider: "M&M services",
-    title: " Lawn Services ",
-    service: "cut lawn",
-    status: "Open",
+    provider: "Metro Atlanta Detailing Inc.",
+    title: "Detailing Services",
+    service: "Interior Detail & Window Tinting",
+    status: "Closed",
     review:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+      "They did a great job! I have 3 kids 2 dogs and a cat and we travel constantly. Needless to say, the inside of my car was a mess! Metro Atlanta Detailing cleaned it all up! They vacummed, removed stains, shampooed my seats, etc. Now my car looks immaculant! And they did an excellent job on the window tinting as well...it looks seamless."
   },
   {
     id: 1,
-    provider: "Joe Smoe",
-    title: "Mobile Detail ",
-    service: "Wash Car",
-    status: "Closed",
+    provider: "The Pink Plumber",
+    title: "Plumbing Services ",
+    service: "Unclog the shower drain and fix the garbage disposal",
+    status: "Pending",
     review: " "
   },
   {
     id: 2,
-    provider: "Just Kidding",
-    title: "Baby sitting",
-    service: "baby sit young child",
-    status: "closed",
+    provider: "Property Masters Landscaping",
+    title: "Lawn & Yard Services",
+    service:
+      "Back Yard Landscaping - including installation of a water feature",
+    status: "Closed",
     review:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
-  },
-  {
-    id: 3,
-    provider: "fdsfsd",
-    title: "fdsfsf ",
-    service: "fdsdfsf",
-    status: "fdsdfsf",
-    review:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+      "My backyard looks amazing! They installed a large fountain and a waterfall over my pool. They even added a firepit. My hedges are trimmed nicely, the lawn is mowed and the flower beds are among the most beautiful that I've ever seen. I gave them a few loose instructions on what I wanted and gave them creative leeway on the rest. What they came up with surpassed my expectations! I'll definitely be recommending them to my friends and family."
   }
 ];
 
@@ -70,36 +62,21 @@ class UserPage extends React.Component {
                 <div className="col-4 col-md-3 m-auto">
                   <img
                     className="rounded-circle"
-                    src="//www.gravatar.com/avatar/8cb7902f0a6c100e16cd43f97c0cf0f7?s=200&amp;rating=pg&amp;default=mm"
+                    src="./images/profilepic.jpg"
                     alt=""
                   />
                 </div>
               </div>
               <div className="text-center">
-                <h2 className="display-4 text-center">Customer Name</h2>
+                <h2 className="display-4 text-center">Luana Stecanella</h2>
                 {/* <p className="lead text-center">
                   Phone <span>Email</span>
                 </p> */}
                 <br />
                 <p />
                 <div className="row">
-                  <div className="col-4 col-md-3 m-auto">
-                    {/* <button className="btn btn-primary iconBtn mr-5"> */}
+                  <span>
                     <UserProfile />
-                    {/* </button> */}
-                  </div>
-
-                  <div>
-                    <a
-                      href="/ProviderPage"
-                      className="btn mr-5"
-                      role="button"
-                      id="Order Service"
-                    >
-                      Provider Page
-                    </a>
-                  </div>
-                  <div className="col-4 col-md-3 m-auto">
                     <a
                       href="/#searchServices"
                       className="btn mr-5"
@@ -108,13 +85,7 @@ class UserPage extends React.Component {
                     >
                       Order Service
                     </a>
-                  </div>
-                  <div className="col-4 col-md-3 m-auto">
-                    {/* TEMPORARY BUTTON TO BE DELETED ONCE WE HAVE THE SEARCH FUNCTIONALITY WORKING ON THE HOME PAGE */}
-                    {/* <button className="btn btn-primary"> */}
-                    {/* <ProviderSummary /> */}
-                    {/* </button> */}
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
@@ -128,7 +99,7 @@ class UserPage extends React.Component {
         </div>
         <div className="row  col-md-12">
           <table className="table table-hover table-striped">
-            <thead className="thead text-align-center" id="userPageTable">
+            <thead className="thead text-align-center">
               <tr>
                 <th scope="col">Provider</th>
                 <th scope="col">Service Name</th>

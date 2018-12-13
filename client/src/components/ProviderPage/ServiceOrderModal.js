@@ -11,15 +11,39 @@ class ServiceOrder extends React.Component {
     super(props);
     this.state = {
       showModal: false
-
-      // provider: this.props.data.provider,
-      // service: this.props.data.service,
-      // review: this.props.data.review
     };
+
     console.log(this.props);
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
+
+  state = {
+    providerName: "Google Inc.",
+    img: "./images/google.jpg",
+    alt: "google office with their colored logo and a bike out front",
+    Phone: "123-456-7891",
+    Email: "Company@gmail.com",
+    url: "Company@comp.com",
+    ServiceCategory: "",
+    ServiceDescription: "",
+    Reviews: "",
+    subCategories: [
+      ["tire change", "oil change", "car wash"],
+      ["lawn care", "trim trees", "trim edges"],
+      ["Pick-up", "Delivery Truck Rental"],
+      ["diagnose car problem", "Fix Car"],
+      ["Fix Toilet", "Kitchen Sink", "Install Pipes"]
+    ],
+    ServiceCategory: [
+      { name: "Car Repair", id: 0 },
+      { name: "Lawn", id: 1 },
+      { name: "Delivery", id: 2 },
+      { name: "Mechanic", id: 3 },
+      { name: "pluming", id: 4 }
+    ],
+    serviceSelected: null
+  };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -45,67 +69,46 @@ class ServiceOrder extends React.Component {
             <br />
             <form>
               <div class="form-group">
-                <label for="providerName">Provider</label>
-                <input
-                  type="text"
-                  value={this.state.provider}
-                  name="provider"
-                  // onChange={this.handleInput}
-                  class="form-control"
-                  id="providerName"
-                  readonly
-                  disabled
-                />
+                <label for="providerName">Provider Name</label>
+                <h3 className="providerName">{this.state.providerName}</h3>
               </div>
-              <div class="form-group">
-                <label for="serviceDescription">Service Description</label>
-                <input
-                  type="text"
-                  value={this.state.service}
-                  name="service"
-                  // onChange={this.handleInput}
-                  class="form-control"
-                  id="serviceDescription"
-                  readonly
-                  disabled
-                />
-              </div>
-              <div class="form-group">
-                <label for="reviewRating">Review Rating</label>
-                {/* <input type="text" class="form-control" id="reviewRating" /> */}
-                <select class="form-control" id="reviewRating">
-                  <option value="" selected disabled>
-                    Select an Option
-                  </option>
-                  <option value="1">1 (Really Bad Service)</option>
-                  <option value="2">2 (I've experienced better)</option>
-                  <option value="3">3 (Just OK)</option>
-                  <option value="4">4 (I'm a fan</option>
-                  <option value="5">5 (As good as it gets)</option>
+              <br />
+              {/* <button type="submit" class="btn btn-primary">Submit</button>*/}
+
+              {/* //FORM */}
+
+              <div className="form-group">
+                <label htmlfor="exampleFormControlSelect1">
+                  Services Provided
+                </label>
+                <select
+                  onChange={this.handleSelect}
+                  className="form-control"
+                  id="exampleFormControlSelect1"
+                >
+                  {/* {this.state.ServiceCategory.map(service => {
+                    return <option value={service.id}>{service.name}</option>;
+                  })} */}
                 </select>
               </div>
-              <div class="form-group">
-                <label for="reviewDescription">Description</label>
-                <textarea
-                  type="text"
-                  value={this.state.review}
-                  name="review"
-                  onChange={this.handleInput}
-                  class="form-control"
-                  id="reviewDescription"
-                  rows="5"
-                />
-                {/* <input
-                type="text"
-                value={this.state.review}
-                name="review"
-                onChange={this.handleInput}
-                class="form-control"
-                id="reviewDescription"
-              /> */}
+              <div className="form-group">
+                <label htmlFor="reviewRating">Service Description</label>
+                <select
+                  onChang={this.handleSub}
+                  className="form-control"
+                  id="subCatSelect"
+                >
+                  {this.state.serviceSelected
+                    ? this.state.subCategories[this.state.serviceSelected].map(
+                        ele => {
+                          return <option value={ele}>{ele}</option>;
+                        }
+                      )
+                    : ""}
+                </select>
               </div>
-              {/* <button type="submit" class="btn btn-primary">Submit</button>*/}
             </form>
+
             {/* Need to add SAVE FUNCTIONALITY and update this.handleCloseModal */}
             <button
               class="btn btn-primary iconBtn mr-5"

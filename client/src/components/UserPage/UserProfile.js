@@ -28,6 +28,7 @@ class UserProfile extends React.Component {
     return (
       <div>
         {/* <button className="btnLink" onClick={this.handleOpenModal}> */}
+<<<<<<< HEAD
         <button className="btn mr-5" onClick={this.handleOpenModal}>
           Update Profile
         </button>
@@ -94,6 +95,57 @@ class UserProfile extends React.Component {
               </div>
             </div>
           </div>
+=======
+        <button
+          className="btn mr-5 update"
+          onClick={this.handleOpenModal}
+        >
+          Update Profile
+        </button>
+        <ReactModal isOpen={this.state.showModal} contentLabel="UserProfile">
+          <form>
+            <img
+              className="rounded-circle accountUpdate"
+              src="./images/profilepic.jpg"
+              alt=""
+            />
+          <br /> <br />
+
+                      <h2 className="modal-title">Luana's Profile</h2>
+
+            <br /> <br />
+          
+            <div className="form-group">
+              <label htmlFor="inputName">Name</label>
+              <input type="text" className="form-control" id="inputName" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputPhone">Phone Number</label>
+              <input type="text" className="form-control" id="inputPhone" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputEmail">Email</label>
+              <input type="text" className="form-control" id="inputEmail" />
+            </div>
+            {/* <button type="submit" className="btn btn-primary">Submit</button>*/}
+          </form>
+          <br /> <br />
+          {/* Need to add SAVE FUNCTIONALITY and update this.handleCloseModal */}
+          <button
+            type="submit"
+            className="btn"
+            onClick={this.handleCloseModal}
+          >
+            Save
+          </button>
+          <button
+            type="submit"
+            className="btn"
+            onClick={this.handleCloseModal}
+          >
+            Cancel
+          </button>
+>>>>>>> 560dd6ca9dbcb16f3d4b7fae207327c82bf785e8
         </ReactModal>
       </div>
     );

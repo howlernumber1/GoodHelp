@@ -33,10 +33,10 @@ class Open extends Component {
                             <th scope="row">1</th>
 
                             {/* {props.username} */}
-                            <td>Sareka</td>
+                            <td>Ted D.</td>
 
                             {/* {props.task} */}
-                            <td>Fix clogged shower drain</td>
+                            <td>Interior Detail w/carpet shampoo, </td>
 
                               {/* buttons on click move it to the corresponding table */}
            
