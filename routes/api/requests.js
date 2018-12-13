@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const Services = require('../../models/Services');
+const Requests = require('../../models/Requests');
 
-// @route GET api/Services/test
-// @desc  Tests Services route
+// @route GET api/Requests/test
+// @desc  Tests Requests route
 // @access Public
-router.get('/test', (req, res) => res.json({msg: "Services Works!"}));
+router.get('/test', (req, res) => res.json({msg: "Requests Works!"}));
 
 router.get('/', function(req, res) {
-  Services.find({})
+  Requests.find({})
     .then(function(data) {
       res.json(data);
     })
