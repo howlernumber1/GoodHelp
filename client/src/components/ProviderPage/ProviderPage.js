@@ -1,8 +1,6 @@
 import React from "react";
 import ServiceOrder from "./ServiceOrderModal";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-// import ReactModal from "react-modal";
-// import ProviderSumPro from "./ProviderSumPro";
 // ReactModal.setAppElement("#root");
 // import { Link } from "react-router-dom";
 

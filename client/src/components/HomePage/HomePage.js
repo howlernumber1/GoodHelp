@@ -1,88 +1,51 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
 import Category from "../Categories/Category";
-=======
-import React, { Component } from 'react';
-import Category from '../Categories/Category';
-import * as $ from 'axios'
+import * as $ from "axios";
 
-const Services = (props) => (
-  <p id={props.key}>{props.service}</p>
-)
+const Services = props => <p id={props.key}>{props.service}</p>;
 
-const Provider = (props) => (
-    <h1>{props.providerName}</h1>
-)
->>>>>>> 560dd6ca9dbcb16f3d4b7fae207327c82bf785e8
+const Provider = props => <h1>{props.providerName}</h1>;
 
 class HomePage extends Component {
   state = {
-<<<<<<< HEAD
-    providerSearchInput: ""
+    providerSearchInput: "",
+    services: [],
+    providers: []
   };
 
   //functions change of state and click function connected to the search button//
 
-  handleProviderSearchChange = event =>
+  handleProviderSearchChange = event => {
     this.setState({
       providerSearchInput: event.target.value
     });
-=======
-    providerSearchInput: '',
-    services: [],
-    providers: []
-  }
-
-  //functions change of state and click function connected to the search button//
-
-  handleProviderSearchChange = (event) => {
-    this.setState(
-      {
-        providerSearchInput: event.target.value
-      })
-    }
->>>>>>> 560dd6ca9dbcb16f3d4b7fae207327c82bf785e8
+  };
 
   handleProviderSearchClick = event => {
     event.preventDefault();
-<<<<<<< HEAD
     console.log(this.state.providerSearchInput);
-  };
-=======
-    console.log(this.state.providerSearchInput)
-    const searchTerm = this.state.providerSearchInput
+    const searchTerm = this.state.providerSearchInput;
 
-    $.get(`/api/serviceprovider/search/${searchTerm}`)
-    .then((result) => {
+    $.get(`/api/serviceprovider/search/${searchTerm}`).then(result => {
       this.setState({
         providers: result.data
-      })
-    })
-  }
->>>>>>> 560dd6ca9dbcb16f3d4b7fae207327c82bf785e8
+      });
+    });
+  };
 
   //function connected to the service category buttons//
 
   handleServiceClick = event => {
     event.preventDefault();
-<<<<<<< HEAD
     console.log(event.target.value);
-  };
-=======
-    console.log(event.target.value)
-    const category = event.target.value
+    const category = event.target.value;
 
-    $.get(`/api/serviceprovider/${category}`)
-    .then((result) => {
+    $.get(`/api/serviceprovider/${category}`).then(result => {
       this.setState({
         providers: result.data
-      })
-    })
-
-  }
->>>>>>> 560dd6ca9dbcb16f3d4b7fae207327c82bf785e8
-
-
+      });
+    });
+  };
 
   render() {
     return (
@@ -106,12 +69,7 @@ class HomePage extends Component {
             now as a provider and grow your clientele (or business).
           </p>
           <div className="d-flex justify-content-center">
-<<<<<<< HEAD
-            <button className="btn btn-lg">Get Started</button>
-=======
             <button className="btn btn-lg"> Get Started</button>
-
->>>>>>> 560dd6ca9dbcb16f3d4b7fae207327c82bf785e8
           </div>
         </div>
 
@@ -141,21 +99,11 @@ class HomePage extends Component {
             </div>
           </div>
           <br />
-<<<<<<< HEAD
           <div className="row results d-flex justify-content-center" />
-=======
-          <div className="row results d-flex justify-content-center">
-          </div>
-        
-        {/* This is where the results from the search button are appended */}
 
-          <div className="SearchResults">
-        
-         
+          {/* This is where the results from the search button are appended */}
 
-            </div>
-
->>>>>>> 560dd6ca9dbcb16f3d4b7fae207327c82bf785e8
+          <div className="SearchResults" />
         </div>
 
         <hr />
@@ -241,26 +189,23 @@ class HomePage extends Component {
             />
           </div>
           <br />
-          <div>
-
-          </div>
+          <div />
 
           <div>
             {this.state.providers.length <= 1 ? (
-            this.state.providers.map((provider, _id) => (
-              <div key={provider._id} className="card">
-              <div className="card-body">
-              <Provider providerName={provider.business_name}/>
-              {provider.services_provided.map((service, i) => (
-                <Services key={i} service={service} />
-              ))}
-              </div>
-            </div>
-            ))
-            ): (
-              <div></div>
-            )
-            }
+              this.state.providers.map((provider, _id) => (
+                <div key={provider._id} className="card">
+                  <div className="card-body">
+                    <Provider providerName={provider.business_name} />
+                    {provider.services_provided.map((service, i) => (
+                      <Services key={i} service={service} />
+                    ))}
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div />
+            )}
           </div>
 
           <a href="/">Back to Top</a>
