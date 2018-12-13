@@ -7,28 +7,12 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import ProviderPage from "./components/ProviderProfile/ProviderProfile";
 import Services from "./components/Services/Services";
+import Requests from "./components/Requests/Requests";
 import NoMatch from "./components/NoMatch/NoMatch";
 import './App.css';
 
 const Header = props => (
   <header>
-    {props.location.pathname === '/user' ? (
-      <nav className="navbar">
-        <p className="navbar-brand"> GoodHelp</p>
-        <span>
-          <Link className="links" to={'/'}>Home</Link>  |
-          {/* <Link to={'/search'}>Search</Link> | */}
-          <Link className="links" to={'/services'}>The</Link> |
-          <Link className="links" to={'/user'}>New</Link> |
-          <Link className="links" to={'/user'}>One</Link> <br />
-          <div className="d-flex justify-content-end float-right">
-            <Login />|
-            <SignUp />
-          </div>
-        </span>
-
-      </nav>
-    ) : (
         <nav className="navbar">
           <p className="navbar-brand"> GoodHelp</p>
           <span>
@@ -43,10 +27,7 @@ const Header = props => (
             <button className="hide-logout btnLink">logout</button>
             </div>
           </span>
-
         </nav>
-      )
-    }
   </header>
 );
 
@@ -76,6 +57,7 @@ class App extends Component {
             <Route exact path='/user' component={UserPage} />
             <Route exact path='/provider' component={ProviderProfile} />
             <Route exact path='/services' component={Services}/>
+            <Route exact path='/requests' component={Requests}/>
             <Route component={NoMatch} />
           </Switch>
 

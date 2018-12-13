@@ -3,14 +3,35 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
-const morgan = require('morgan');
 const clients = require('./routes/api/clients');
+const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const services = require('./routes/api/services');
 const post = require('./routes/api/post');
+const providers = require('./routes/api/ServiceProvider.js');
+const requests = require('./routes/api/requests.js');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
+
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport Config
+require('./config/passport')(passport);
+
+// Use Routes
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/services', services);
+app.use('/api/post', post);
+app.use('/api/serviceprovider', providers);
+app.use('/api/requests', requests);
+app.use('/api/clients', clients);
 
 // DB Config
 // const db = require('./config/keys').mongoURI;
@@ -25,31 +46,9 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-
-// Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(morgan('combined'));
-
-// Passport Config
-require('./config/passport');
-
-// Passport middleware
-app.use(passport.initialize());
-
-
-
-// Use Routes
-app.use('/api/clients', clients);
-app.use('/api/profile', profile);
-app.use('/api/services', services);
-app.use('/api/post', post);
-
-
-
 // -----------------Database configuration with Mongoose---------------
 // -----------------Define local MongoDB URI---------------
-var databaseUri = 'mongodb://localhost/goodhelpApp';
+var databaseUri = 'mongodb://localhost/goodhelp';
 // ------------------------------------------------
 if (process.env.MONGODB_URI) {
 //THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
