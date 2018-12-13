@@ -12,7 +12,8 @@ class Login extends React.Component {
     this.state = {
       showModal: false,
       loginEmail: "",
-      loginPassword: ""
+      loginPassword: "",
+      isLoggedIn: false
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -40,13 +41,15 @@ class Login extends React.Component {
       password: this.state.loginPassword
     };
     console.log(loginUser);
-    $.post('clients/login', loginUser)
+    $.post('/api/clients/login', loginUser)
     .then(res => {
       console.log(res)
       if(res.data) {
         console.log('successful login')
-        this.setState({redirectTo: '/'
+        localStorage.setItem("token", res.data.token)
+        this.setState({redirectTo: '/', isLoggedIn: true
         })
+
       } else {
         console.log('login error');
       }
@@ -57,6 +60,14 @@ class Login extends React.Component {
     })
     this.handleCloseModal();
   };
+
+logout = event => {
+  event.preventDefault();
+  window.localStorage.removeItem('token');
+  this.setState({
+    isLoggedIn: false
+  })
+}
 
   render() {
     return (

@@ -110,7 +110,7 @@ class SignUp extends React.Component {
         password: this.state.signUpPassword
       };
       console.log(newUser);
-      $.post('api/clients/register', newUser)
+      $.post('/api/clients/register', newUser)
       .then(res => {
         console.log(res)
         if(res.data) {
@@ -136,7 +136,7 @@ class SignUp extends React.Component {
         email: this.state.businessEmail
       };
       console.log(newProvider);
-      $.post('api/clients/register', newProvider)
+      $.post('/api/clients/register', newProvider)
       .then(res => {
         console.log(res)
         if(res.data) {
