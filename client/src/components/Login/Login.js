@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import $ from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import  { faTimes }  from '@fortawesome/free-solid-svg-icons';
 ReactModal.setAppElement('#root');
@@ -11,7 +12,8 @@ class Login extends React.Component {
     this.state = {
       showModal: false,
       loginEmail: "",
-      loginPassword: ""
+      loginPassword: "",
+      isLoggedIn: false
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -39,8 +41,33 @@ class Login extends React.Component {
       password: this.state.loginPassword
     };
     console.log(loginUser);
+    $.post('/api/clients/login', loginUser)
+    .then(res => {
+      console.log(res)
+      if(res.data) {
+        console.log('successful login')
+        localStorage.setItem("token", res.data.token)
+        this.setState({redirectTo: '/', isLoggedIn: true
+        })
+
+      } else {
+        console.log('login error');
+      }
+    })
+    .catch(error => {
+      console.log('login server error:');
+      console.log(error);
+    })
     this.handleCloseModal();
   };
+
+logout = event => {
+  event.preventDefault();
+  window.localStorage.removeItem('token');
+  this.setState({
+    isLoggedIn: false
+  })
+}
 
   render() {
     return (
@@ -55,6 +82,16 @@ class Login extends React.Component {
         <form>
           <button className="close-float btnLink" onClick={this.handleCloseModal}><FontAwesomeIcon icon={faTimes} size="1x" /></button>
           <br></br>
+          <label htmlFor="typeOfClient">What are you?</label>
+          <select
+            name="typeOfClient"
+            onChange={this.handleChange}
+            className="form-control"
+            defaultValue="client"
+          >
+            <option value="client">Client</option>
+            <option value="provider">Provider</option>
+          </select>
           <div className="form-group">
             <label htmlFor="InputEmail">Email address:</label>
             <input type="email" className="form-control" onChange={this.handleChange} name = "loginEmail" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"/>

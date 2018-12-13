@@ -24,6 +24,7 @@ const Header = props => (
             <div className="d-flex justify-content-end float-right">
             <Login />|
             <SignUp />
+            <button className="hide-logout btnLink">logout</button>
             </div>
           </span>
         </nav>
@@ -60,11 +61,11 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
 
-    
+
         </div>
       </BrowserRouter>
 
-      
+
     );
   }
 }
