@@ -39,7 +39,6 @@ const Header = props => (
         </span>
       </nav>
     ) : (
-<<<<<<< HEAD
       <nav className="navbar">
         <p className="navbar-brand"> GoodHelp</p>
         <span>
@@ -55,22 +54,11 @@ const Header = props => (
             Member
           </Link>{" "}
           |
-          <Link className="links" to={"/Provider"}>
+          <Link className="links" to={"/provider"}>
             Provider
           </Link>{" "}
           <br />
           <div className="d-flex justify-content-end float-right">
-=======
-        <nav className="navbar">
-          <p className="navbar-brand"> GoodHelp</p>
-          <span>
-            <Link className="links" to={'/'}>Home</Link>  |
-          {/* <Link to={'/search'}>Search</Link> | */}
-            <Link className="links" to={'/services'}>Services</Link> |
-            <Link className="links" to={'/user'}>Member</Link> |
-            <Link className="links" to={'/provider'}>Provider</Link> <br />
-            <div className="d-flex justify-content-end float-right">
->>>>>>> 560dd6ca9dbcb16f3d4b7fae207327c82bf785e8
             <Login />|
             <SignUp />
           </div>
@@ -107,15 +95,8 @@ class App extends Component {
             <Route exact path="/services" component={ProviderPage} />
             <Route component={NoMatch} />
           </Switch>
-<<<<<<< HEAD
-=======
-
-    
->>>>>>> 560dd6ca9dbcb16f3d4b7fae207327c82bf785e8
         </div>
       </BrowserRouter>
-
-      
     );
   }
 }
