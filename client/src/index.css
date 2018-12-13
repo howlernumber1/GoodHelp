@@ -27,3 +27,7 @@ code {
 .close-float {
   float:right;
 }
+
+.hide-logout {
+  display: none
+}

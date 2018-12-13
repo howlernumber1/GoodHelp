@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 // Load Users model
-const users = require('../../models/Users');
+const client = require('../../models/Client');
 
-// Load ServiceProvider model 
+// Load ServiceProvider model
 const serviceprovider = require('../../models/ServiceProvider');
 
 // Load Client model

@@ -88,7 +88,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
-
+const clients = require('./routes/api/clients');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const services = require('./routes/api/services');
@@ -116,6 +116,7 @@ app.use('/api/services', services);
 app.use('/api/post', post);
 app.use('/api/serviceprovider', providers);
 app.use('/api/requests', requests);
+app.use('/api/clients', clients);
 
 // DB Config
 // const db = require('./config/keys').mongoURI;
@@ -161,4 +162,7 @@ db.once('open', function() {
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+<<<<<<< HEAD
 >>>>>>> c568e058c453caf1bc774790025f4757901b2fa7
+=======
+>>>>>>> 64c54512cc3072718644cb5d77f5dbc2e19e789e
