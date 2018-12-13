@@ -1,4 +1,3 @@
-
 import React from 'react';
 import $ from 'axios';
 
@@ -6,10 +5,8 @@ const service = (props) => (
   <div>
     <p>{props.category}</p>
     <p>{props.description}</p>
-  </div>
+    </div>
 )
-
-
 
     class Services extends React.Component {
 
@@ -50,7 +47,7 @@ const service = (props) => (
                             </div>
                             {this.state.services.map(service => (
                               <service>
-                                {service.category}
+                                {service.category} ----------------------------
                                 {service.description}
                               </service>
                             ))}
@@ -60,13 +57,7 @@ const service = (props) => (
 
                 </div>
 
-
-
-
-
                 )}
-
-
             }
 
 export default Services;

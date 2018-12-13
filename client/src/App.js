@@ -36,7 +36,7 @@ const Header = props => (
           {/* <Link to={'/search'}>Search</Link> | */}
             <Link className="links" to={'/services'}>Services</Link> |
             <Link className="links" to={'/user'}>Member</Link> |
-            <Link className="links" to={'/user'}>Provider</Link> <br />
+            <Link className="links" to={'/provider'}>Provider</Link> <br />
             <div className="d-flex justify-content-end float-right">
             <Login />|
             <SignUp />
@@ -70,7 +70,6 @@ class App extends Component {
           </header> */}
 
           <Route component={Header} />
-
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/user' component={UserPage} />
@@ -79,8 +78,11 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
 
+    
         </div>
       </BrowserRouter>
+
+      
     );
   }
 }

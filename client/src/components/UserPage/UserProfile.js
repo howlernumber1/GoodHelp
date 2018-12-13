@@ -29,30 +29,33 @@ class UserProfile extends React.Component {
       <div>
         {/* <button className="btnLink" onClick={this.handleOpenModal}> */}
         <button
-          className="btn btn-primary iconBtn"
+          className="btn mr-5 update"
           onClick={this.handleOpenModal}
         >
           Update Profile
         </button>
         <ReactModal isOpen={this.state.showModal} contentLabel="UserProfile">
-          <h2 className="modal-title">USER PROFILE</h2>
-          <br /> <br />
           <form>
             <img
-              className="rounded-circle"
-              src="//www.gravatar.com/avatar/8cb7902f0a6c100e16cd43f97c0cf0f7?s=200&amp;rating=pg&amp;default=mm"
+              className="rounded-circle accountUpdate"
+              src="./images/profilepic.jpg"
               alt=""
             />
+          <br /> <br />
+
+                      <h2 className="modal-title">Luana's Profile</h2>
+
             <br /> <br />
+          
             <div className="form-group">
               <label htmlFor="inputName">Name</label>
-              <input type="text" className="htmlForm-control" id="inputName" />
+              <input type="text" className="form-control" id="inputName" />
             </div>
             <div className="form-group">
               <label htmlFor="inputPhone">Phone Number</label>
               <input type="text" className="form-control" id="inputPhone" />
             </div>
-            <div classNamelass="form-group">
+            <div className="form-group">
               <label htmlFor="inputEmail">Email</label>
               <input type="text" className="form-control" id="inputEmail" />
             </div>
@@ -62,14 +65,14 @@ class UserProfile extends React.Component {
           {/* Need to add SAVE FUNCTIONALITY and update this.handleCloseModal */}
           <button
             type="submit"
-            className="btn btn-primary iconBtn mr-5"
+            className="btn"
             onClick={this.handleCloseModal}
           >
             Save
           </button>
           <button
             type="submit"
-            className="btn btn-primary iconBtn mr-5"
+            className="btn"
             onClick={this.handleCloseModal}
           >
             Cancel

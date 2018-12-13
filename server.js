@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const clients = require('./routes/api/clients');
 const profile = require('./routes/api/profile');
 const services = require('./routes/api/services');
-const post = require('./routes/api/posts');
+const post = require('./routes/api/post');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -49,7 +49,7 @@ app.use('/api/post', post);
 
 // -----------------Database configuration with Mongoose---------------
 // -----------------Define local MongoDB URI---------------
-var databaseUri = 'mongodb://localhost/goodhelpApp';
+var databaseUri = 'mongodb://localhost/goodhelp';
 // ------------------------------------------------
 if (process.env.MONGODB_URI) {
 //THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
@@ -61,14 +61,6 @@ if (process.env.MONGODB_URI) {
 //-----------------End database configuration-------------------------
 
 var db = mongoose.connection;
-
-// mongoose
-//   // .MongoClient.connect(
-//   //   {useNewUrlParser: true}
-//   //   )
-//   .connect(db)
-//   .then(() => console.log('MongoDB Connected'))
-//   .catch(err => console.log(err));
 
 // show any mongoose errors
 db.on('error', function(err) {

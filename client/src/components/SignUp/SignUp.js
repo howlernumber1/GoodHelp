@@ -52,12 +52,6 @@ class SignUp extends React.Component {
       websiteLink: "",
       businessPhone: "",
       businessEmail: ""
-      // areasButton: [
-      //   <AreaButton />
-      // ],
-      // serviceButton: [
-      //   <ServiceProvided />
-      // ]
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);

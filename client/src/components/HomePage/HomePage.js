@@ -1,25 +1,43 @@
 import React, { Component } from 'react';
 import Category from '../Categories/Category';
+import * as $ from 'axios'
+
+const Services = (props) => (
+  <p id={props.key}>{props.service}</p>
+)
+
+const Provider = (props) => (
+    <h1>{props.providerName}</h1>
+)
 
 class HomePage extends Component {
 
   state = {
-    providerSearchInput: ''
+    providerSearchInput: '',
+    services: [],
+    providers: []
   }
 
   //functions change of state and click function connected to the search button//
 
-  handleProviderSearchChange = (event) => (
+  handleProviderSearchChange = (event) => {
     this.setState(
       {
         providerSearchInput: event.target.value
-      }
-    )
-  )
+      })
+    }
 
   handleProviderSearchClick = (event) => {
     event.preventDefault();
     console.log(this.state.providerSearchInput)
+    const searchTerm = this.state.providerSearchInput
+
+    $.get(`/api/serviceprovider/search/${searchTerm}`)
+    .then((result) => {
+      this.setState({
+        providers: result.data
+      })
+    })
   }
 
   //function connected to the service category buttons//
@@ -27,7 +45,18 @@ class HomePage extends Component {
   handleServiceClick = (event) => {
     event.preventDefault();
     console.log(event.target.value)
+    const category = event.target.value
+
+    $.get(`/api/serviceprovider/${category}`)
+    .then((result) => {
+      this.setState({
+        providers: result.data
+      })
+    })
+
   }
+
+
 
   render() {
 
@@ -44,7 +73,7 @@ class HomePage extends Component {
           <p>Search within our large list of credited and reliable businesses to find the right one for your property management needs.</p>
           <p>If you are a small business who wants to join 'Good Help', sign up now as a provider and grow your clientele (or business).</p>
           <div className="d-flex justify-content-center">
-            <button className="btn btn-lg">Get Started</button>
+            <button className="btn btn-lg"> Get Started</button>
 
           </div>
 
@@ -52,7 +81,6 @@ class HomePage extends Component {
 
 
         {/* search section */}
-
         <div className="container">
           <div className="row d-flex justify-content-center">
             <div className="searchSection">
@@ -67,6 +95,14 @@ class HomePage extends Component {
           <br />
           <div className="row results d-flex justify-content-center">
           </div>
+        
+        {/* This is where the results from the search button are appended */}
+
+          <div className="SearchResults">
+        
+         
+
+            </div>
 
         </div>
 
@@ -97,6 +133,28 @@ class HomePage extends Component {
             <Category handleServiceClick={this.handleServiceClick} category="Plumbing Services" img="./images/sink.png" alt="white toilet" />
           </div>
           <br />
+          <div>
+
+          </div>
+
+          <div>
+            {this.state.providers.length <= 1 ? (
+            this.state.providers.map((provider, _id) => (
+              <div key={provider._id} className="card">
+              <div className="card-body">
+              <Provider providerName={provider.business_name}/>
+              {provider.services_provided.map((service, i) => (
+                <Services key={i} service={service} />
+              ))}
+              </div>
+            </div>
+            ))
+            ): (
+              <div></div>
+            )
+            }
+          </div>
+
           <a href="/">Back to Top</a>
 
         </div>

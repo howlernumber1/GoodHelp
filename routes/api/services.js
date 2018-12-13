@@ -17,4 +17,14 @@ router.get('/', function(req, res) {
     });
 });
 
+// POST 
+// parameters sent with 
+router.post('/', function(req, res) {
+  var category = req.body.category;
+  var description= req.body.description;
+  
+  res.send(category + ' ' + description);
+});
+  
+
 module.exports = router;

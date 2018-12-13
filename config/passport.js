@@ -1,8 +1,10 @@
 const keys = require('../config/keys');
 
+
 const passport = require('passport'),
 mongoose = require('mongoose'),
 jwt = require('jsonwebtoken'),
+User = mongoose.model('users'),
 Client = mongoose.model('clients'),
 JWTstrategy = require('passport-jwt').Strategy,
 ExtractJWT = require('passport-jwt').ExtractJwt;
