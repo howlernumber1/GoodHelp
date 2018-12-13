@@ -1,9 +1,10 @@
 import React from "react";
 import TableRow from "./TableRow";
-// import { Link } from "react-router-dom";
-// import ServiceReview from "./ServiceReviewModal";
-import ProviderSummary from "../ProviderSummary/ProviderSummary";
 import UserProfile from "./UserProfile";
+
+// import { Link } from "react-router-dom";
+// import ServiceReview from "./ServiceReviewModal_mine";
+// import ProviderSummary from "../ProviderPage/ProviderSummary";
 
 //Created fake data to test dynamic row creation
 const fakeData = [
@@ -28,11 +29,12 @@ const fakeData = [
     id: 2,
     provider: "Property Masters Landscaping",
     title: "Lawn & Yard Services",
-    service: "Back Yard Landscaping - including installation of a water feature",
+    service:
+      "Back Yard Landscaping - including installation of a water feature",
     status: "Closed",
     review:
       "My backyard looks amazing! They installed a large fountain and a waterfall over my pool. They even added a firepit. My hedges are trimmed nicely, the lawn is mowed and the flower beds are among the most beautiful that I've ever seen. I gave them a few loose instructions on what I wanted and gave them creative leeway on the rest. What they came up with surpassed my expectations! I'll definitely be recommending them to my friends and family."
-  },
+  }
 ];
 
 class UserPage extends React.Component {
@@ -55,7 +57,7 @@ class UserPage extends React.Component {
         <div className="row">
           <div className="col-md-12">
             {/* <div className="card card-body bg-info text-white mb-3"> */}
-            <div className="card card-body bg-Light text-black mb-3">
+            <div className="card card-body text-black mb-3" id="userPageCard">
               <div className="row">
                 <div className="col-4 col-md-3 m-auto">
                   <img
@@ -72,21 +74,18 @@ class UserPage extends React.Component {
                 </p> */}
                 <br />
                 <p />
-                <div>
-                <span><UserProfile />
-                  <a
-                    href="#"
-                    className="btn mr-5"
-                    role="button"
-                    id="Order Service"
-                  > 
-                    Order Service
-                  </a> </span>
-
-                  {/* TEMPORARY BUTTON TO BE DELETED ONCE WE HAVE THE SEARCH FUNCTIONALITY WORKING ON THE HOME PAGE */}
-                  
-                    <ProviderSummary />
-                
+                <div className="row">
+                  <span>
+                    <UserProfile />
+                    <a
+                      href="/#searchServices"
+                      className="btn mr-5"
+                      role="button"
+                      id="Order Service"
+                    >
+                      Order Service
+                    </a>
+                  </span>
                 </div>
               </div>
             </div>

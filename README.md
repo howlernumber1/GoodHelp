@@ -1,6 +1,7 @@
 # GoodHelp
 
 ## Team Members:
+
 Ashley Donald, Michael Toplisek, Tiffany Hall, Mark Johnson, Sareka Belnavis
 
 ## Project Description:
@@ -19,6 +20,3 @@ the small business gets free marketing allowing more visibility for them along w
 gain long-term customers. The app will also give property owners access to reliable service
 providers who have been vetted and have the ability to sign a contract to retain their services on a
 long-term business.
-
-
-test

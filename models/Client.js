@@ -1,5 +1,3 @@
-const express = require('express');
-const router = express.Router();
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -23,6 +21,4 @@ var ClientSchema = new Schema ({
  });
 
 
-const Client = mongoose.model('Client', ClientSchema);
-
-module.exports = Client;
+module.exports = Client = mongoose.model('clients', ClientSchema);

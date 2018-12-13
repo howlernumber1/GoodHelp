@@ -73,11 +73,14 @@ class ServiceReview extends React.Component {
                 <label for="reviewRating">Review Rating</label>
                 {/* <input type="text" class="form-control" id="reviewRating" /> */}
                 <select class="form-control" id="reviewRating">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option value="" selected disabled>
+                    Select an Option
+                  </option>
+                  <option value="1">1 (Really Bad Service)</option>
+                  <option value="2">2 (I've experienced better)</option>
+                  <option value="3">3 (Just OK)</option>
+                  <option value="4">4 (I'm a fan</option>
+                  <option value="5">5 (As good as it gets)</option>
                 </select>
               </div>
               <div class="form-group">

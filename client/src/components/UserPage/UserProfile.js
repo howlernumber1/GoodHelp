@@ -1,6 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
-// import UserPage from "./UserPage";
+// import UserPage from "./UserPage__mine";
 ReactModal.setAppElement("#root");
 
 // import { Link } from "react-router-dom";
@@ -28,10 +28,7 @@ class UserProfile extends React.Component {
     return (
       <div>
         {/* <button className="btnLink" onClick={this.handleOpenModal}> */}
-        <button
-          className="btn mr-5 update"
-          onClick={this.handleOpenModal}
-        >
+        <button className="btn mr-5 update" onClick={this.handleOpenModal}>
           Update Profile
         </button>
         <ReactModal isOpen={this.state.showModal} contentLabel="UserProfile">
@@ -41,12 +38,9 @@ class UserProfile extends React.Component {
               src="./images/profilepic.jpg"
               alt=""
             />
-          <br /> <br />
-
-                      <h2 className="modal-title">Luana's Profile</h2>
-
             <br /> <br />
-          
+            <h2 className="modal-title">Luana's Profile</h2>
+            <br /> <br />
             <div className="form-group">
               <label htmlFor="inputName">Name</label>
               <input type="text" className="form-control" id="inputName" />
@@ -63,18 +57,10 @@ class UserProfile extends React.Component {
           </form>
           <br /> <br />
           {/* Need to add SAVE FUNCTIONALITY and update this.handleCloseModal */}
-          <button
-            type="submit"
-            className="btn"
-            onClick={this.handleCloseModal}
-          >
+          <button type="submit" className="btn" onClick={this.handleCloseModal}>
             Save
           </button>
-          <button
-            type="submit"
-            className="btn"
-            onClick={this.handleCloseModal}
-          >
+          <button type="submit" className="btn" onClick={this.handleCloseModal}>
             Cancel
           </button>
         </ReactModal>
