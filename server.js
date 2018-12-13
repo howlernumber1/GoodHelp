@@ -8,6 +8,8 @@ const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const services = require('./routes/api/services');
 const post = require('./routes/api/post');
+const providers = require('./routes/api/ServiceProvider.js');
+const requests = require('./routes/api/requests.js');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
