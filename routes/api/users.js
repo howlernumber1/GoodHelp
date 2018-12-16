@@ -10,19 +10,16 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-// Load Client model
-const Client = require('../../models/Client');
+// Load User model
+const User = require('../../models/User');
 
 // @route   GET api/users/test
 // @desc    Tests users route
 // @access  Public
 router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
 
-
-// register user Create route start---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-// @route   POST api/users/register
-// @desc    Register/Signup user
+// @route   GET api/users/register
+// @desc    Register user
 // @access  Public
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -32,7 +29,7 @@ router.post('/register', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  Client.findOne({ email: req.body.email }).then(user => {
+  User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       errors.email = 'Email already exists';
       return res.status(400).json(errors);
@@ -43,11 +40,11 @@ router.post('/register', (req, res) => {
         d: 'mm' // Default
       });
 
-      const newUser = new Client({
-        clientname: req.body.clientname,
+      const newUser = new User({
+        name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
-        phone: req.body.phone
+        avatar,
+        password: req.body.password
       });
 
       bcrypt.genSalt(10, (err, salt) => {
@@ -64,12 +61,6 @@ router.post('/register', (req, res) => {
   });
 });
 
-// register user Create end ---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-// login user Create start ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 // @route   GET api/users/login
 // @desc    Login User / Returning JWT Token
 // @access  Public
@@ -85,7 +76,7 @@ router.post('/login', (req, res) => {
   const password = req.body.password;
 
   // Find user by email
-  Client.findOne({ email }).then(user => {
+  User.findOne({ email }).then(user => {
     // Check for user
     if (!user) {
       errors.email = 'User not found';
@@ -96,17 +87,17 @@ router.post('/login', (req, res) => {
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         // User Matched
-        const payload = { id: user.id, clientname: user.clientname, avatar: user.avatar }; // Create JWT Payload
+        const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
 
         // Sign Token
         jwt.sign(
           payload,
-          keys.PRIVATE_KEY,
+          keys.secretOrKey,
           { expiresIn: 3600 },
           (err, token) => {
             res.json({
               success: true,
-              token: token
+              token: 'Bearer ' + token
             });
           }
         );
@@ -118,96 +109,19 @@ router.post('/login', (req, res) => {
   });
 });
 
-
-// login user Create end ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-// Update user Create function ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Update user Create function ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-// Delete user Create function ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Delete user Create function ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 // @route   GET api/users/current
 // @desc    Return current user
 // @access  Private
-// router.get(
-//   '/current',
-//   passport.authenticate('jwt', { session: false }),
-//   (req, res) => {
-//     res.json({
-//       id: req.user.id,
-//       name: req.user.name,
-//       email: req.user.email
-//     });
-//   }
-// );
-//
+router.get(
+  '/current',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      name: req.user.name,
+      email: req.user.email
+    });
+  }
+);
+
 module.exports = router;

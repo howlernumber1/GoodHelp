@@ -31,13 +31,7 @@ router.get('/', (req, res) => {
 // @access  Public
 router.get('/:id', (req, res) => {
   Post.findById(req.params.id)
-    .then(post => {
-      if (post) {
-        res.json(post);
-      } else {
-        res.status(404).json({ nopostfound: 'No post found with that ID' })
-      }
-    })
+    .then(post => res.json(post))
     .catch(err =>
       res.status(404).json({ nopostfound: 'No post found with that ID' })
     );
@@ -61,6 +55,7 @@ router.post(
     const newPost = new Post({
       text: req.body.text,
       name: req.body.name,
+      avatar: req.body.avatar,
       user: req.user.id
     });
 
@@ -88,7 +83,7 @@ router.delete(
           // Delete
           post.remove().then(() => res.json({ success: true }));
         })
-        .catch(err => res.status(404).json({ requestNotFound: 'No post found' }));
+        .catch(err => res.status(404).json({ postnotfound: 'No post found' }));
     });
   }
 );
@@ -104,20 +99,20 @@ router.post(
       Post.findById(req.params.id)
         .then(post => {
           if (
-            post.requests.filter(like => like.user.toString() === req.user.id)
+            post.likes.filter(like => like.user.toString() === req.user.id)
               .length > 0
           ) {
             return res
               .status(400)
-              .json({ alreadyClosed: 'User already closed this request' });
+              .json({ alreadyliked: 'User already liked this post' });
           }
 
-          // Add user id to requests array
-          post.requests.unshift({ user: req.user.id });
+          // Add user id to likes array
+          post.likes.unshift({ user: req.user.id });
 
           post.save().then(post => res.json(post));
         })
-        .catch(err => res.status(404).json({ requestNotFound: 'No request found' }));
+        .catch(err => res.status(404).json({ postnotfound: 'No post found' }));
     });
   }
 );
@@ -133,26 +128,26 @@ router.post(
       Post.findById(req.params.id)
         .then(post => {
           if (
-            post.requests.filter(like => like.user.toString() === req.user.id)
+            post.likes.filter(like => like.user.toString() === req.user.id)
               .length === 0
           ) {
             return res
               .status(400)
-              .json({ notclosed: 'You have not yet closed this post' });
+              .json({ notliked: 'You have not yet liked this post' });
           }
 
           // Get remove index
-          const removeIndex = post.requests
+          const removeIndex = post.likes
             .map(item => item.user.toString())
             .indexOf(req.user.id);
 
           // Splice out of array
-          post.requests.splice(removeIndex, 1);
+          post.likes.splice(removeIndex, 1);
 
           // Save
           post.save().then(post => res.json(post));
         })
-        .catch(err => res.status(404).json({ requestNotFound: 'No post found' }));
+        .catch(err => res.status(404).json({ postnotfound: 'No post found' }));
     });
   }
 );
@@ -174,19 +169,20 @@ router.post(
 
     Post.findById(req.params.id)
       .then(post => {
-        const newRequest = {
+        const newComment = {
           text: req.body.text,
           name: req.body.name,
+          avatar: req.body.avatar,
           user: req.user.id
         };
 
         // Add to comments array
-        post.comments.unshift(newRequest);
+        post.comments.unshift(newComment);
 
         // Save
         post.save().then(post => res.json(post));
       })
-      .catch(err => res.status(404).json({ requestNotFound: 'No post found' }));
+      .catch(err => res.status(404).json({ postnotfound: 'No post found' }));
   }
 );
 
@@ -220,7 +216,7 @@ router.delete(
 
         post.save().then(post => res.json(post));
       })
-      .catch(err => res.status(404).json({ requestNotFound: 'No post found' }));
+      .catch(err => res.status(404).json({ postnotfound: 'No post found' }));
   }
 );
 

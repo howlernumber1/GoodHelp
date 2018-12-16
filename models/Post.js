@@ -14,7 +14,10 @@ const PostSchema = new Schema({
   name: {
     type: String
   },
-  requests: [
+  avatar: {
+    type: String
+  },
+  likes: [
     {
       user: {
         type: Schema.Types.ObjectId,
@@ -33,6 +36,9 @@ const PostSchema = new Schema({
         required: true
       },
       name: {
+        type: String
+      },
+      avatar: {
         type: String
       },
       date: {
